@@ -1,6 +1,6 @@
 name: guardrails - Comprehensive Example
 type: LIVE
-
+#try again
 # just to fire automation
 # fire again
 common_properties: &common_properties
@@ -54,4 +54,3 @@ rules:
         description: this is a single property
         type: string
         required: true
-        

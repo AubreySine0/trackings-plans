@@ -7,9 +7,9 @@ const axios = require('axios');
 const dirPath = './tracking-rules';
 
 // Define the API endpoint
-const workspace = process.env.SEGMENT_WORKSPACE;
+const workspace = process.env.SEGMENT_WORKSPACE_SLUG;
 const trackingPlanId = process.env.SEGMENT_TRACKING_PLAN_ID;
-const apiUrl = `https://api.segmentapis.com/tracking-plans/${workspace}/${trackingPlanId}/rules`;
+const apiUrl = `https://api.segmentapis.com/tracking-plans/${trackingPlanId}/rules?count=50`;
 
 // Define the API key
 const apiKey = process.env.SEGMENT_PUBLIC_API_TOKEN;
