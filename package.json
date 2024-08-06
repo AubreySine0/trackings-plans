@@ -1,0 +1,11 @@
+{
+  "name": "trackings-plans",
+  "version": "1.0.0",
+  "description": "a bad ass way to combine workflows & segment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aubrey Sine",
+  "license": "ISC"
+}
