@@ -54,4 +54,4 @@ rules:
         description: this is a single property
         type: string
         required: true
-ß
+        
