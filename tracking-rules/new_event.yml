@@ -1,6 +1,7 @@
 name: guardrails - Comprehensive Example
 type: LIVE
 
+# just to fire automation
 common_properties: &common_properties
   prop1:
     description: this is a required common property, includable via template

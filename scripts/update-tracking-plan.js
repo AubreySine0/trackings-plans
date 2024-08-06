@@ -13,6 +13,10 @@ const apiUrl = `https://api.segmentapis.com/tracking-plans/${workspace}/${tracki
 
 // Define the API key
 const apiKey = process.env.SEGMENT_PUBLIC_API_TOKEN;
+console.log('API key:', apiKey);
+console.log('API URL:', apiUrl);
+console.log('Workspace:', workspace);
+console.log('Tracking Plan ID:', trackingPlanId);
 
 // Function to load all YAML files from the directory
 function loadYamlFiles(directory) {
@@ -26,6 +30,8 @@ function loadYamlFiles(directory) {
       allRules = allRules.concat(data.rules);
     }
   });
+
+  console.log('Loaded rules:', allRules);
 
   return allRules;
 }
