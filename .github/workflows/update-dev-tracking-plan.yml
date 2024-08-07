@@ -78,7 +78,11 @@ jobs:
 
     - name: Set environment variables for development
       run: |
-        echo "SEGMENT_TRACKING_PLAN_ID=${{ secrets['DEV_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}" >> $GITHUB_ENV
+        if [ "${{ matrix.plan }}" == "javascript" ]; then
+          echo "SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}" >> $GITHUB_ENV
+        elif [ "${{ matrix.plan }}" == "server" ]; then
+          echo "SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}" >> $GITHUB_ENV
+        fi
 
     - name: Run update script
       env:
