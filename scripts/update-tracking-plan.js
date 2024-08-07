@@ -62,7 +62,7 @@ console.log('Request payload:', JSON.stringify({ rules }, null, 2));
 // Update the tracking plan rules
 async function updateTrackingPlanRules() {
   try {
-    const response = await axios.put(
+    const response = await axios.patch(
       apiUrl,
       { rules },
       {
