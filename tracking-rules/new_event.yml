@@ -71,7 +71,6 @@ rules:
           int:
             description: this is an optional sub-property in an object
             type: number
-            required: false
         type: object
         required: true    
         
@@ -81,6 +80,4 @@ rules:
           string:
             description: this is a required sub-property in an object
             type: string
-            required: false
         type: object
-        required: false
