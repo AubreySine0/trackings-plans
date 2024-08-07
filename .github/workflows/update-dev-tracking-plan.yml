@@ -76,7 +76,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Set environment variables
+    - name: Set environment variables for development
       run: |
         echo "SEGMENT_TRACKING_PLAN_ID=${{ secrets['DEV_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}" >> $GITHUB_ENV
 
