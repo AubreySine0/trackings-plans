@@ -57,7 +57,7 @@ const rules = loadYamlFiles(dirPath).map(rule => ({
   }
 }));
 
-console.log('Request payload:', { rules });
+console.log('Request payload:', JSON.stringify({ rules }, null, 2));
 
 // Update the tracking plan rules
 async function updateTrackingPlanRules() {
