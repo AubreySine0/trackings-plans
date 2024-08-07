@@ -53,3 +53,34 @@ rules:
         description: this is a single property
         type: string
         required: true
+
+  - key: Obj Prop
+    type: TRACK
+    description: 
+    version: 1
+    labels:
+      feature: journeys
+    properties:
+      object:
+        description: this is a single property
+        properties:
+          string:
+            description: this is a required sub-property in an object
+            type: string
+            required: true
+          int:
+            description: this is an optional sub-property in an object
+            type: number
+            required: false
+        type: object
+        required: true    
+        
+      object2:
+        description: this is a single property
+        properties:
+          string:
+            description: this is a required sub-property in an object
+            type: string
+            required: false
+        type: object
+        required: false

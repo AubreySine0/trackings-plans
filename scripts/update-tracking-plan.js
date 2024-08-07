@@ -36,24 +36,53 @@ function loadYamlFiles(directory) {
   return allRules;
 }
 
-// Extract and format rules for the API
-const rules = loadYamlFiles(dirPath).map(rule => ({
-  key: rule.key,
-  type: rule.type,
-  version: rule.version,
-  jsonSchema: {
-    $schema: "http://json-schema.org/draft-07/schema#",
-    type: "object",
-    properties: {
-      context: {},
-      traits: {},
-      properties: {
-        type: "object",
-        properties: rule.properties
+// Function to format properties and collect required fields
+function formatProperties(properties) {
+  const formattedProperties = {};
+  const requiredFields = [];
+
+  for (const [key, value] of Object.entries(properties)) {
+    formattedProperties[key] = { ...value };
+    if (value.required === true) {
+      requiredFields.push(key);
+      delete formattedProperties[key].required;
+    }
+    if (value.properties) {
+      const result = formatProperties(value.properties);
+      formattedProperties[key].properties = result.properties;
+      if (result.required.length > 0) {
+        formattedProperties[key].required = result.required;
       }
     }
   }
-}));
+
+  return { properties: formattedProperties, required: requiredFields };
+}
+
+// Extract and format rules for the API
+const rules = loadYamlFiles(dirPath).map(rule => {
+  const result = formatProperties(rule.properties);
+
+  return {
+    key: rule.key,
+    type: rule.type,
+    version: rule.version,
+    jsonSchema: {
+      $schema: "http://json-schema.org/draft-07/schema#",
+      type: "object",
+      properties: {
+        context: { type: "object" },
+        traits: { type: "object" },
+        properties: {
+          type: "object",
+          properties: result.properties,
+          required: result.required.length > 0 ? result.required : undefined
+        }
+      },
+      required: ["properties"]
+    }
+  };
+});
 
 console.log('Request payload:', JSON.stringify({ rules }, null, 2));
 
@@ -72,7 +101,7 @@ async function updateTrackingPlanRules() {
     );
     console.log('Tracking plan rules updated successfully:', response.data);
   } catch (error) {
-    console.error('Error updating tracking plan rules:', error);
+    console.error('Error updating tracking plan rules:', error.response ? error.response.data : error.message);
   }
 }
 
