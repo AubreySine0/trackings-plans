@@ -20,35 +20,35 @@ rules:
     labels:
       feature: journeys
     properties:
-      # array_prop1:
-      #   description: this is an array property (it will specify  "items", keys that need to exist for each item in the array)
-      #   items:
-      #     properties:
-      #       layer1_array_prop:
-      #         description: this array would be required as a property on any items in the array_prop1 array
-      #         items:
-      #           properties:
-      #             layer2_prop:
-      #               description: this string would be required on any item in the layer_1_array_prop array
-      #               type: string
-      #               required: true
-      #           type: object
-      #         type: array
-      #         required: true
-      #       layer1_prop2:
-      #         description: this is an optional property on any items in the array_prop1 array
-      #         type: string
-      #     type: object
-      #   type: array
-      # obj_prop1:
-      #   description: this is required object (i.e. can have nested sub-properties)
-      #   properties:
-      #     sub_prop1:
-      #       description: this is a required sub-property in an object
-      #       type: string
-      #       required: true
-      #   type: object
-      #   required: true   #test
+      array_prop1:
+        description: this is an array property (it will specify  "items", keys that need to exist for each item in the array)
+        items:
+          properties:
+            layer1_array_prop:
+              description: this array would be required as a property on any items in the array_prop1 array
+              items:
+                properties:
+                  layer2_prop:
+                    description: this string would be required on any item in the layer_1_array_prop array
+                    type: string
+                    required: true
+                type: object
+              type: array
+              required: true
+            layer1_prop2:
+              description: this is an optional property on any items in the array_prop1 array
+              type: string
+          type: object
+        type: array
+      obj_prop1:
+        description: this is required object (i.e. can have nested sub-properties)
+        properties:
+          sub_prop1:
+            description: this is a required sub-property in an object
+            type: string
+            required: true
+        type: object
+        required: true   #test
       prop3:
         description: this is a single property
         type: string
