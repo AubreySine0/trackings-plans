@@ -38,7 +38,8 @@ on:
     branches-ignore:
       - main
     paths:
-      - 'tracking-rules/**.yml'
+      - 'tracking-rules/javascript/**.yml'
+      - 'tracking-rules/server/**.yml'
 
 jobs:
   identify-changed-plans:
@@ -62,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        plan: ${{ fromJson(needs.identify-changed-plans.outputs.plans) }}
+        plan: ${{ fromJson(needs.identify-changed-plans.outputs.changed_plans) }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -75,16 +76,20 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Set environment variables
+      run: |
+        echo "SEGMENT_TRACKING_PLAN_ID=${{ secrets['DEV_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}" >> $GITHUB_ENV
+
     - name: Run update script
       env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets['DEV_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_KEY }}  # Common API key
+        SEGMENT_TRACKING_PLAN_ID: ${{ env.SEGMENT_TRACKING_PLAN_ID }}
         PLAN_DIR: tracking-rules/${{ matrix.plan }}
       run: node scripts/update-tracking-plan.js
 
     - name: Save updated tracking plan
       env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} # Common API key
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets['DEV_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_KEY }}  # Common API key
+        SEGMENT_TRACKING_PLAN_ID: ${{ env.SEGMENT_TRACKING_PLAN_ID }}
         PLAN_DIR: tracking-plans/${{ matrix.plan }}
       run: node scripts/save-tracking-plan.js
