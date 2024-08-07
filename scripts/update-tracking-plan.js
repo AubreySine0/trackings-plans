@@ -46,9 +46,7 @@ const rules = loadYamlFiles(dirPath).map(rule => ({
     type: "object",
     properties: {
       context: {},
-      traits: {
-        type: "object"
-      },
+      traits: {},
       properties: {
         type: "object",
         properties: rule.properties
