@@ -53,7 +53,10 @@ jobs:
     - name: Identify changed tracking plans
       id: set-changed-plans
       run: |
-        changed_files=$(git diff --name-only HEAD^ HEAD)
+        if [ "$(git rev-parse --is-shallow-repository)" == "true" ]; then
+          git fetch --prune --unshallow
+        fi
+        changed_files=$(git diff --name-only HEAD~1..HEAD)
         changed_plans=$(echo "$changed_files" | grep 'tracking-rules/' | cut -d'/' -f2 | uniq)
         echo "Changed plans: $changed_plans"
         echo "::set-output name=changed_plans::$changed_plans"
@@ -86,14 +89,14 @@ jobs:
 
     - name: Run update script
       env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_KEY }}  # Common API key
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
         SEGMENT_TRACKING_PLAN_ID: ${{ env.SEGMENT_TRACKING_PLAN_ID }}
         PLAN_DIR: tracking-rules/${{ matrix.plan }}
       run: node scripts/update-tracking-plan.js
 
     - name: Save updated tracking plan
       env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_KEY }}  # Common API key
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
         SEGMENT_TRACKING_PLAN_ID: ${{ env.SEGMENT_TRACKING_PLAN_ID }}
         PLAN_DIR: tracking-plans/${{ matrix.plan }}
       run: node scripts/save-tracking-plan.js
