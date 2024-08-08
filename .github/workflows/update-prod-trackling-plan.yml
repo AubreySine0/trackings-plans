@@ -1,4 +1,36 @@
-# name: Update Production Tracking Plan
+# # name: Update Production Tracking Plan
+
+# # on:
+# #   push:
+# #     branches:
+# #       - main
+# #     paths:
+# #       - 'tracking-rules/**.yml'
+
+# # jobs:
+# #   update-tracking-plan:
+# #     runs-on: ubuntu-latest
+
+# #     steps:
+# #     - name: Checkout repository
+# #       uses: actions/checkout@v3
+
+# #     - name: Set up Node.js
+# #       uses: actions/setup-node@v3
+# #       with:
+# #         node-version: '14'
+
+# #     - name: Install dependencies
+# #       run: npm install
+
+# #     - name: Run update script
+# #       env:
+# #         SEGMENT_PUBLIC_API_TOKEN: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+# #         SEGMENT_WORKSPACE: ${{ secrets.SEGMENT_WORKSPACE_SLUG }}
+# #         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.SEGMENT_TRACKING_PLAN_ID }}
+# #       run: node scripts/update-tracking-plan.js
+
+# name: Update Production Tracking Plans
 
 # on:
 #   push:
@@ -8,9 +40,28 @@
 #       - 'tracking-rules/**.yml'
 
 # jobs:
-#   update-tracking-plan:
+#   identify-changed-plans:
 #     runs-on: ubuntu-latest
+#     outputs:
+#       plans: ${{ steps.set-changed-plans.outputs.changed_plans }}
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
 
+#     - name: Identify changed tracking plans
+#       id: set-changed-plans
+#       run: |
+#         changed_files=$(git diff --name-only HEAD^ HEAD)
+#         changed_plans=$(echo "$changed_files" | grep 'tracking-rules/' | cut -d'/' -f2 | uniq)
+#         echo "Changed plans: $changed_plans"
+#         echo "::set-output name=changed_plans::$changed_plans"
+
+#   update-tracking-plan:
+#     needs: identify-changed-plans
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         plan: ${{ fromJson(needs.identify-changed-plans.outputs.plans) }}
 #     steps:
 #     - name: Checkout repository
 #       uses: actions/checkout@v3
@@ -25,65 +76,14 @@
 
 #     - name: Run update script
 #       env:
-#         SEGMENT_PUBLIC_API_TOKEN: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
-#         SEGMENT_WORKSPACE: ${{ secrets.SEGMENT_WORKSPACE_SLUG }}
-#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.SEGMENT_TRACKING_PLAN_ID }}
+#         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} # Common API key
+#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets['PROD_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
+#         PLAN_DIR: tracking-rules/${{ matrix.plan }}
 #       run: node scripts/update-tracking-plan.js
 
-name: Update Production Tracking Plans
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'tracking-rules/**.yml'
-
-jobs:
-  identify-changed-plans:
-    runs-on: ubuntu-latest
-    outputs:
-      plans: ${{ steps.set-changed-plans.outputs.changed_plans }}
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Identify changed tracking plans
-      id: set-changed-plans
-      run: |
-        changed_files=$(git diff --name-only HEAD^ HEAD)
-        changed_plans=$(echo "$changed_files" | grep 'tracking-rules/' | cut -d'/' -f2 | uniq)
-        echo "Changed plans: $changed_plans"
-        echo "::set-output name=changed_plans::$changed_plans"
-
-  update-tracking-plan:
-    needs: identify-changed-plans
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        plan: ${{ fromJson(needs.identify-changed-plans.outputs.plans) }}
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run update script
-      env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} # Common API key
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets['PROD_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
-        PLAN_DIR: tracking-rules/${{ matrix.plan }}
-      run: node scripts/update-tracking-plan.js
-
-    - name: Save updated tracking plan
-      env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets['PROD_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
-        PLAN_DIR: tracking-plans/${{ matrix.plan }}
-      run: node scripts/save-tracking-plan.js
+#     - name: Save updated tracking plan
+#       env:
+#         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
+#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets['PROD_SEGMENT_TRACKING_PLAN_ID_' + matrix.plan.toUpperCase()] }}
+#         PLAN_DIR: tracking-plans/${{ matrix.plan }}
+#       run: node scripts/save-tracking-plan.js
