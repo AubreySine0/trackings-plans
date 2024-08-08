@@ -1,16 +1,9 @@
 name: guardrails - Comprehensive Example
 type: LIVE
 #try again
-# just to fire automation
-# fire again and again and again
-common_properties: &common_properties
-  prop1:
-    description: this is a required common property, includable via template
-    type: string
-    required: true
-  second_prop:
-    type: number
-    description: this is an optional common property, includable via template
+# just to fire automation fdg
+# fire again and again and again sdfSFD AS
+
 
 rules:
   - key: First Event
