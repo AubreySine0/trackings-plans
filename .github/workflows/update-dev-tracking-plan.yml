@@ -89,7 +89,7 @@ jobs:
 
     - name: Run update script
       env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Common API key
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}  # Comm  on API key
         SEGMENT_TRACKING_PLAN_ID: ${{ env.SEGMENT_TRACKING_PLAN_ID }}
         PLAN_DIR: tracking-rules/${{ matrix.plan }}
       run: node scripts/update-tracking-plan.js
