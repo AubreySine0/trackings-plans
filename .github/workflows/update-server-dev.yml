@@ -29,3 +29,4 @@ jobs:
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}
         PLAN_DIR: tracking-rules/server
       run: node scripts/update-tracking-plan.js
+
