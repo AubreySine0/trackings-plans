@@ -46,7 +46,7 @@ rules:
         description: this is a single property blah blah blah
         properties:
           string:
-            description: this is a required sub-property in an object
+            description: this is a required sub-property in an object sdas
             type: string
             required: true
           int:
