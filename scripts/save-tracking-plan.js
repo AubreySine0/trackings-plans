@@ -20,7 +20,7 @@ console.log('Pagination Count:', paginationCount);
 async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
   try {
     // Construct the API URL with query parameters for pagination
-    let requestUrl = `${apiUrl}?pagination.count=${paginationCount}`;
+    let requestUrl = `${apiUrl}?count=${paginationCount}`;
     if (cursor) {
       requestUrl += `&cursor=${cursor}`;
     }
@@ -40,6 +40,7 @@ async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = [
     // Accumulate the rules from this page
     const rules = response.data.data.rules || [];
     accumulatedRules = accumulatedRules.concat(rules);
+    console.log('Accumulated rules so far:', accumulatedRules.length);
 
     // Handle pagination if there's more data
     if (response.data.data.pagination && response.data.data.pagination.next) {
@@ -60,11 +61,21 @@ async function main() {
   const allRules = await fetchUpdatedTrackingPlanRules();
 
   console.log('Total rules fetched:', allRules.length);
-  
+
+  // File path for saving the rules
+  const filePath = path.join(planDir, 'javascript/current-rules.json');
+  console.log('Final file path:', filePath);
+
+  // Ensure the directory exists
+  ensureDirectoryExistence(filePath);
+
   // Save all accumulated rules to a single JSON file
-  const filePath = path.join(planDir, 'current-rules.json');
-  fs.writeFileSync(filePath, JSON.stringify({ rules: allRules }, null, 2));
-  console.log('Saved all rules to:', filePath);
+  try {
+    fs.writeFileSync(filePath, JSON.stringify({ rules: allRules }, null, 2));
+    console.log('Saved all rules to:', filePath);
+  } catch (error) {
+    console.error('Error writing file:', error.message);
+  }
 }
 
 // Run the main function
