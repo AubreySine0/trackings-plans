@@ -20,7 +20,7 @@ console.log('Pagination Count:', paginationCount);
 async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
   try {
     // Construct the API URL with query parameters for pagination
-    let requestUrl = `${apiUrl}?count=${paginationCount}`;
+    let requestUrl = `${apiUrl}?pagination.count=${paginationCount}`;
     if (cursor) {
       requestUrl += `&cursor=${cursor}`;
     }
@@ -38,12 +38,13 @@ async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = [
     console.log('Fetched page successfully:', response.data);
 
     // Accumulate the rules from this page
-    accumulatedRules = accumulatedRules.concat(response.data.rules || []);
+    const rules = response.data.data.rules || [];
+    accumulatedRules = accumulatedRules.concat(rules);
 
     // Handle pagination if there's more data
-    if (response.data.pagination && response.data.pagination.next) {
+    if (response.data.data.pagination && response.data.data.pagination.next) {
       console.log('Fetching next page...');
-      return await fetchUpdatedTrackingPlanRules(response.data.pagination.next, accumulatedRules);
+      return await fetchUpdatedTrackingPlanRules(response.data.data.pagination.next, accumulatedRules);
     } else {
       console.log('All pages fetched.');
       return accumulatedRules;
@@ -58,7 +59,7 @@ async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = [
 async function main() {
   const allRules = await fetchUpdatedTrackingPlanRules();
 
-  console.log('Total rules fetched:', allRules);
+  console.log('Total rules fetched:', allRules.length);
   
   // Save all accumulated rules to a single JSON file
   const filePath = path.join(planDir, 'current-rules.json');
