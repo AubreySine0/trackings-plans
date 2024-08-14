@@ -63,7 +63,7 @@ async function main() {
   console.log('Total rules fetched:', allRules.length);
 
   // File path for saving the rules
-  const filePath = path.join(planDir, 'javascript/current-rules.json');
+  const filePath = path.join(planDir, 'current-rules.json');
   console.log('Final file path:', filePath);
 
   // Ensure the directory exists
