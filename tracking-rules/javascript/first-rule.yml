@@ -49,8 +49,8 @@ rules:
             description: this is a required sub-property in an object
             type: string
             required: true
-          int:
-            description: this is an optional sub-property in an object
+          int1:
+            description: this should be a new property
             type: number
         type: object
         required: true    
