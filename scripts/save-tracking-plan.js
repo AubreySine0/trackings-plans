@@ -6,7 +6,7 @@ const axios = require('axios');
 const planDir = process.env.PLAN_DIR;
 const workspace = process.env.SEGMENT_WORKSPACE;
 const trackingPlanId = process.env.SEGMENT_TRACKING_PLAN_ID;
-const apiUrl = `https://api.segmentapis.com/tracking-plans/${workspace}/${trackingPlanId}/rules`;
+const apiUrl = `https://api.segmentapis.com/tracking-plans/${trackingPlanId}/rules`;
 const apiKey = process.env.SEGMENT_API_KEY;
 const paginationCount = 100; // Fixed pagination count
 
@@ -20,7 +20,7 @@ console.log('Pagination Count:', paginationCount);
 async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
   try {
     // Construct the API URL with query parameters for pagination
-    let requestUrl = `${apiUrl}?pagination.count=${paginationCount}`;
+    let requestUrl = `${apiUrl}?count=${paginationCount}`;
     if (cursor) {
       requestUrl += `&cursor=${cursor}`;
     }
