@@ -34,5 +34,5 @@ jobs:
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}
-        PLAN_DIR: tracking-plans/server
+        PLAN_DIR: plans/server
       run: node scripts/save-tracking-plan.js
