@@ -57,10 +57,12 @@ async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = [
 // Main function to fetch and save all rules
 async function main() {
   const allRules = await fetchUpdatedTrackingPlanRules();
+
+  console.log('Total rules fetched:', allRules);
   
   // Save all accumulated rules to a single JSON file
   const filePath = path.join(planDir, 'current-rules.json');
-  fs.writeFileSync(filePath, JSON.stringify({ allRules }, null, 2));
+  fs.writeFileSync(filePath, JSON.stringify({ rules: allRules }, null, 2));
   console.log('Saved all rules to:', filePath);
 }
 
