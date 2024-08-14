@@ -82,7 +82,7 @@ rules:
         description: tfhis is required obj ect (i.e. c an have nested sub-properties) fdasf
         properties:
           sub_prop1:
-            description: this is a required sub-property in an object
+            description: this is a req uired sub-property in an object
             type: string
             required: true
         type: object

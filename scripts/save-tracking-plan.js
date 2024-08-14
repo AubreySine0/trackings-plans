@@ -66,9 +66,6 @@ async function main() {
   const filePath = path.join(planDir, 'current-rules.json');
   console.log('Final file path:', filePath);
 
-  // Ensure the directory exists
-  ensureDirectoryExistence(filePath);
-
   // Save all accumulated rules to a single JSON file
   try {
     fs.writeFileSync(filePath, JSON.stringify({ rules: allRules }, null, 2));
