@@ -50,7 +50,7 @@ rules:
             type: string
             required: true
           int:
-            description: this is an optional sub-property in an object
+            description: this is an optional sub-property in an object dsfas
             type: number
         type: object
         required: true    

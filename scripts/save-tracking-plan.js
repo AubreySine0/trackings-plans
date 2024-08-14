@@ -16,15 +16,6 @@ console.log('Workspace:', workspace);
 console.log('Tracking Plan ID:', trackingPlanId);
 console.log('Pagination Count:', paginationCount);
 
-// Ensure the directory exists before saving the file
-function ensureDirectoryExistence(filePath) {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
-    return true;
-  }
-  fs.mkdirSync(dirname, { recursive: true });
-}
-
 // Fetch the updated tracking plan rules with pagination
 async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
   try {
@@ -70,13 +61,8 @@ async function main() {
 
   console.log('Total rules fetched:', allRules.length);
   
-  // File path for saving the rules
-  const filePath = path.join(planDir, 'javascript/current-rules.json');
-  
-  // Ensure the directory exists
-  ensureDirectoryExistence(filePath);
-  
   // Save all accumulated rules to a single JSON file
+  const filePath = path.join(planDir, 'current-rules.json');
   fs.writeFileSync(filePath, JSON.stringify({ rules: allRules }, null, 2));
   console.log('Saved all rules to:', filePath);
 }
