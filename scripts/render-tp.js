@@ -7,7 +7,7 @@ const tpTitle = process.argv[2];
 const jsonSourcePath = process.argv[3];
 const markdownTargetPath = process.argv[4];
 
-// Load the JSON data using fs.readFileSync and JSON.parse
+// Load the JSON data using fs.readFileSync and JSON.parse  test
 const jsonPath = path.resolve(jsonSourcePath);
 const jsonData = fs.readFileSync(jsonPath, 'utf8');
 const json = JSON.parse(jsonData);
@@ -22,8 +22,8 @@ for (let event of trackEvents) {
     let formattedEvent = [];
     formattedEvent.push('\n');
 
-    formattedEvent.push('### ' + event.name + '\n');
-    let eventData = event.rules.properties;
+    formattedEvent.push('### ' + event.key + '\n');
+    let eventData = event.jsonSchema.properties;
 
     formattedEvent.push('<!-- tabs:start -->');
     formattedEvent.push('#### **Basics**' + '\n');
