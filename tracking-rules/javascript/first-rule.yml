@@ -50,7 +50,7 @@ rules:
             type: string
             required: true
           int1:
-            description: this should be   a new property sd safd asdffasf
+            description: this should be   a new propertydd sd safd asdffasf
             type: number
         type: object
         required: true    
