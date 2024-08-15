@@ -197,13 +197,19 @@ const rules = loadYamlFiles(changedFiles).map(rule => {
     jsonSchema.labels = rule.labels;
   }
 
-  return {
+  const formattedRule = {
     key: rule.key,
     type: rule.type,
     version: rule.version,
-    description: rule.description ?? "", // Include description if available
     jsonSchema,
   };
+
+  // Conditionally add description if it exists and is not empty
+  if (rule.description && rule.description.trim() !== "") {
+    formattedRule.description = rule.description;
+  }
+
+  return formattedRule;
 });
 
 console.log('Request payload:', JSON.stringify({ rules }, null, 2));
