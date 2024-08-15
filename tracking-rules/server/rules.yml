@@ -5,7 +5,7 @@ type: LIVE
 
 
 rules:
-  - key: First Event
+  - key: First Event 
     type: TRACK
     description: 
     version: 1
@@ -35,7 +35,7 @@ rules:
         type: string
         required: true
 
-  - key: Obj Prop 1
+  - key: Obj Prop 2
     type: TRACK
     description: 
     version: 1
