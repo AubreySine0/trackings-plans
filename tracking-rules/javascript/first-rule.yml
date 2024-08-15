@@ -35,7 +35,7 @@ rules:
         type: string
         required: true
 
-  - key: Obj Prop
+  - key: Obj Prop 
     type: TRACK
     description: 
     version: 1
@@ -46,7 +46,7 @@ rules:
         description: this is a single property
         properties:
           string:
-            description: this is a required sub-property in an object
+            description: this is a required sub-property in an object vsdfs
             type: string
             required: true
           int1:
