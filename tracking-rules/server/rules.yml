@@ -43,14 +43,14 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single pro  perty blah blah blah  afdg asf
+        description: this is a single pro perty
         properties:
           string:
-            description: this is a required sub-property in an object sdas
+            description: this is a required sub-property in an object 
             type: string
             required: true
           int:
-            description: this is an optional sub-property in an object dsfas
+            description: this is an optional sub-property in an object 
             type: number
         type: object
         required: true    
