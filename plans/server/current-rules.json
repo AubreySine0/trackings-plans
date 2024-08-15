@@ -222,7 +222,7 @@
                 "type": "object"
               },
               "prop3": {
-                "description": "this is a single property saddsffas adfvad",
+                "description": "this is a single property",
                 "type": "string"
               }
             },
@@ -237,7 +237,7 @@
         ]
       },
       "createdAt": "2024-08-14T22:29:07.000Z",
-      "updatedAt": "2024-08-15T16:57:13.000Z",
+      "updatedAt": "2024-08-15T18:09:02.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
