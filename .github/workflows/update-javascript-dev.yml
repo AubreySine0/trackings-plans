@@ -1,3 +1,90 @@
+# name: Update Development Tracking Plans
+
+# on:
+#   push:
+#     branches-ignore:
+#       - main
+#     paths:
+#       - 'tracking-rules/server/**'
+#       - 'tracking-rules/javascript/**'
+#       # Add paths for additional tracking plans here
+
+# jobs:
+#   update-tracking-plans:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#       with:
+#         fetch-depth: 2  # Fetch the last two commits so HEAD^ is available
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '14'
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     # Run update scripts for both server and JavaScript without committing
+#     - name: Run update script for server
+#       run: |
+#         echo "Checking for changes in server tracking plan"
+#         git diff --name-only HEAD^ HEAD
+#         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+#         PLAN_DIR=tracking-rules/server \
+#         node scripts/update-tracking-plan.js || echo "No changes detected for server"
+
+#     - name: Run save script for server
+#       run: |
+#         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+#         PLAN_DIR=plans/server \
+#         node scripts/save-tracking-plan.js || echo "No changes detected for server"
+
+#     - name: Run update script for JavaScript
+#       run: |
+#         echo "Checking for changes in JavaScript tracking plan"
+#         git diff --name-only HEAD^ HEAD
+#         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+#         PLAN_DIR=tracking-rules/javascript \
+#         node scripts/update-tracking-plan.js || echo "No changes detected for JavaScript"
+
+#     - name: Run save script for JavaScript
+#       run: |
+#         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+#         PLAN_DIR=plans/javascript \
+#         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
+
+#     # Stash, pull with rebase, apply stash, commit, and push all changes together
+#     - name: Stash changes
+#       run: |
+#         git stash -u  # Stash all untracked and tracked changes
+
+#     - name: Pull latest changes and rebase
+#       run: |
+#         git pull origin ${{ github.ref }} --rebase  # Pull latest changes before committing
+
+#     - name: Apply stashed changes
+#       run: |
+#         git stash pop  # Apply the stashed changes back to the working directory
+
+#     - name: Commit and push all changes
+#       run: |
+#         git config --global user.name "github-actions[bot]" && \
+#         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
+#         git add plans/server/current-rules.json plans/javascript/current-rules.json && \
+#         git commit -m "Update tracking plan rules for server and JavaScript [skip ci]" || echo "No changes to commit" && \
+#         git push origin ${{ github.ref }}
+
 name: Update Development Tracking Plans
 
 on:
@@ -27,7 +114,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # Run update scripts for both server and JavaScript without committing
+    # Update scripts for both server and JavaScript without committing
     - name: Run update script for server
       run: |
         echo "Checking for changes in server tracking plan"
@@ -38,14 +125,6 @@ jobs:
         PLAN_DIR=tracking-rules/server \
         node scripts/update-tracking-plan.js || echo "No changes detected for server"
 
-    - name: Run save script for server
-      run: |
-        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
-        PLAN_DIR=plans/server \
-        node scripts/save-tracking-plan.js || echo "No changes detected for server"
-
     - name: Run update script for JavaScript
       run: |
         echo "Checking for changes in JavaScript tracking plan"
@@ -55,32 +134,3 @@ jobs:
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
         PLAN_DIR=tracking-rules/javascript \
         node scripts/update-tracking-plan.js || echo "No changes detected for JavaScript"
-
-    - name: Run save script for JavaScript
-      run: |
-        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/javascript \
-        node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
-
-    # Stash, pull with rebase, apply stash, commit, and push all changes together
-    - name: Stash changes
-      run: |
-        git stash -u  # Stash all untracked and tracked changes
-
-    - name: Pull latest changes and rebase
-      run: |
-        git pull origin ${{ github.ref }} --rebase  # Pull latest changes before committing
-
-    - name: Apply stashed changes
-      run: |
-        git stash pop  # Apply the stashed changes back to the working directory
-
-    - name: Commit and push all changes
-      run: |
-        git config --global user.name "github-actions[bot]" && \
-        git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
-        git add plans/server/current-rules.json plans/javascript/current-rules.json && \
-        git commit -m "Update tracking plan rules for server and JavaScript [skip ci]" || echo "No changes to commit" && \
-        git push origin ${{ github.ref }}

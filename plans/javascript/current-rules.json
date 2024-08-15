@@ -302,13 +302,13 @@
           "properties": {
             "type": "object",
             "properties": {
-              "prop3": {
+              "prop1": {
                 "description": "this is a single property",
                 "type": "string"
               }
             },
             "required": [
-              "prop3"
+              "prop1"
             ]
           }
         },
@@ -317,7 +317,7 @@
         ]
       },
       "createdAt": "2024-08-15T18:53:05.000Z",
-      "updatedAt": "2024-08-15T18:53:05.000Z",
+      "updatedAt": "2024-08-15T20:52:22.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
