@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const axios = require('axios');
+const { execSync } = require('child_process');
 
 // Get environment variables
 const planDir = process.env.PLAN_DIR;
@@ -12,6 +13,12 @@ const apiKey = process.env.SEGMENT_API_KEY;
 console.log('API key:', apiKey);
 console.log('API URL:', apiUrl);
 console.log('Tracking Plan ID:', trackingPlanId);
+
+// Function to get the list of changed files in the latest commit
+function getChangedFiles(directory) {
+  const changedFiles = execSync('git diff --name-only HEAD^ HEAD').toString().split('\n');
+  return changedFiles.filter(file => file.startsWith(directory) && file.endsWith('.yml'));
+}
 
 // Function to load all YAML files from the directory
 function loadYamlFiles(directory) {
@@ -54,8 +61,11 @@ function formatProperties(properties) {
   return { properties: formattedProperties, required: requiredFields };
 }
 
-// Extract and format rules for the API
-const rules = loadYamlFiles(planDir).map(rule => {
+// Get the list of changed files in the specified directory
+const changedFiles = getChangedFiles(planDir);
+
+// Load and process only the changed files
+const rules = loadYamlFiles(changedFiles).map(rule => {
   const result = formatProperties(rule.properties);
 
   return {
