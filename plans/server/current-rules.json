@@ -138,7 +138,7 @@
             "type": "object",
             "properties": {
               "object": {
-                "description": "this is a single property hey hey",
+                "description": "this is a single property",
                 "properties": {
                   "int": {
                     "description": "this is an optional sub-property in an object hey hey",
@@ -175,7 +175,7 @@
         ]
       },
       "createdAt": "2024-08-15T21:14:57.000Z",
-      "updatedAt": "2024-08-15T21:14:57.000Z",
+      "updatedAt": "2024-08-15T23:09:42.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
