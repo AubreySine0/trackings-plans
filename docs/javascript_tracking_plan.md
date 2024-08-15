@@ -15,7 +15,7 @@ JavaScript Tracking Plan
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Button Clicked" {
 });
 ``` 
 
@@ -41,7 +41,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("First Event" {
 "array_prop1": "<<array>>"
 "obj_prop1": "<<object>>"
 "prop3": "<<string>>"
@@ -69,7 +69,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Obj Prop" {
 "object": "<<object>>"
 "object2": "<<object>>"
 });
@@ -96,7 +96,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Obj Prop 2" {
 "object": "<<object>>"
 "object2": "<<object>>"
 });
@@ -124,7 +124,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Second Event" {
 "array_prop1": "<<array>>"
 "obj_prop1": "<<object>>"
 "prop3": "<<string>>"
@@ -150,7 +150,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Segment Consent Preference Updated" {
 });
 ``` 
 
@@ -174,7 +174,7 @@ analytics.track("undefined" {
 #### **JS**
 
 ```javascript
-analytics.track("undefined" {
+analytics.track("Third Event" {
 "prop2": "<<string>>"
 });
 ``` 
