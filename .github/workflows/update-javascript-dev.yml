@@ -78,9 +78,11 @@ jobs:
           - name: server
             update-path: tracking-rules/server
             save-path: plans/server
+            segment-id: tp_2kO3mFM1SCvheOsYn8FnaqfSntQ
           - name: javascript
             update-path: tracking-rules/javascript
             save-path: plans/javascript
+            segment-id: tp_2kLqsJ16a4e8HZB0R3qAxRYHgIo
           # Add additional tracking plans here
 
     steps:
@@ -99,7 +101,7 @@ jobs:
       if: ${{ contains(github.event.head_commit.message, matrix.tracking-plan.update-path) }}
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}  # Hardcoded for server
+        SEGMENT_TRACKING_PLAN_ID: ${{ matrix.tracking-plan.segment-id }}
         PLAN_DIR: ${{ matrix.tracking-plan.update-path }}
       run: node scripts/update-tracking-plan.js
 
@@ -107,7 +109,7 @@ jobs:
       if: ${{ contains(github.event.head_commit.message, matrix.tracking-plan.update-path) }}
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}  # Hardcoded for server
+        SEGMENT_TRACKING_PLAN_ID: ${{ matrix.tracking-plan.segment-id }}
         PLAN_DIR: ${{ matrix.tracking-plan.save-path }}
       run: node scripts/save-tracking-plan.js
 
