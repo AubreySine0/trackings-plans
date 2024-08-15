@@ -90,6 +90,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 2  # Fetch the last two commits so HEAD~1 is available
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -128,4 +130,3 @@ jobs:
         git add ${{ matrix.tracking-plan.save-path }}/current-rules.json
         git commit -m "Update tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin ${{ github.ref }}
-
