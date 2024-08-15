@@ -207,6 +207,9 @@ jobs:
       with:
         fetch-depth: 2  # Ensure the last two commits are available
 
+    - name: Reinstall dependencies for JavaScript plan
+      run: npm install  # Reinstall dependencies to ensure the environment is set up
+
     # Update, commit, and push for javascript
     - name: Run update script for javascript
       run: |
