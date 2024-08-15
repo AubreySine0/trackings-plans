@@ -7,7 +7,7 @@ const tpTitle = process.argv[2];
 const jsonSourcePath = process.argv[3];
 const markdownTargetPath = process.argv[4];
 
-// Load the JSON data using fs.readFileSync and JSON.parse
+// Load the JSON data using fs.readFileSync and JSON.parse  test
 const jsonPath = path.resolve(jsonSourcePath);
 const jsonData = fs.readFileSync(jsonPath, 'utf8');
 const json = JSON.parse(jsonData);
