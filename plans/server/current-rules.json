@@ -31,7 +31,7 @@
                 "type": "array"
               },
               "obj_prop1": {
-                "description": "this is required object (i.e. can have nested sub-properties) sfdfsd",
+                "description": "this is required object (i.e. can have nested sub-properties)",
                 "properties": {
                   "sub_prop1": {
                     "description": "this is a required sub-property in an object",
@@ -58,8 +58,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:23:59.000Z",
-      "updatedAt": "2024-08-15T18:07:51.000Z",
+      "createdAt": "2024-08-08T18:17:33.000Z",
+      "updatedAt": "2024-08-15T22:31:00.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -116,8 +116,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:23:59.000Z",
-      "updatedAt": "2024-08-14T22:59:51.000Z",
+      "createdAt": "2024-08-08T18:17:33.000Z",
+      "updatedAt": "2024-08-14T22:58:13.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -174,8 +174,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-15T21:15:54.000Z",
-      "updatedAt": "2024-08-15T21:15:54.000Z",
+      "createdAt": "2024-08-15T21:14:57.000Z",
+      "updatedAt": "2024-08-15T21:14:57.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -232,8 +232,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-15T00:25:26.000Z",
-      "updatedAt": "2024-08-15T21:12:46.000Z",
+      "createdAt": "2024-08-15T00:13:21.000Z",
+      "updatedAt": "2024-08-15T21:11:25.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -294,8 +294,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-14T22:31:15.000Z",
-      "updatedAt": "2024-08-15T18:10:58.000Z",
+      "createdAt": "2024-08-14T22:29:07.000Z",
+      "updatedAt": "2024-08-15T18:09:02.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -318,8 +318,8 @@
           }
         }
       },
-      "createdAt": "2024-08-08T18:15:36.000Z",
-      "updatedAt": "2024-08-08T18:15:36.000Z",
+      "createdAt": "2024-08-08T18:15:52.000Z",
+      "updatedAt": "2024-08-08T18:15:52.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
