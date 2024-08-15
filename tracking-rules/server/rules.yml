@@ -43,7 +43,7 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single pro  perty blah blah blah
+        description: this is a single pro  perty blah blah blah  afdg
         properties:
           string:
             description: this is a required sub-property in an object sdas
