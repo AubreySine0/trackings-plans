@@ -127,6 +127,7 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git pull origin ${{ github.ref }} --rebase  # Pull latest changes and rebase
         git add ${{ matrix.tracking-plan.save-path }}/current-rules.json
         git commit -m "Update tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin ${{ github.ref }}
