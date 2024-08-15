@@ -44,7 +44,7 @@
                 "type": "object"
               },
               "prop3": {
-                "description": "this is a single property",
+                "description": "this is a single property sdfas",
                 "type": "string"
               }
             },
@@ -59,7 +59,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:17:33.000Z",
-      "updatedAt": "2024-08-08T18:17:33.000Z",
+      "updatedAt": "2024-08-15T00:18:42.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -138,7 +138,7 @@
             "type": "object",
             "properties": {
               "object": {
-                "description": "this is a single pro  perty blah blah blah",
+                "description": "this is a single pro  perty blah blah blah  afdg",
                 "properties": {
                   "int": {
                     "description": "this is an optional sub-property in an object dsfas",
@@ -175,7 +175,7 @@
         ]
       },
       "createdAt": "2024-08-15T00:13:21.000Z",
-      "updatedAt": "2024-08-15T00:16:55.000Z",
+      "updatedAt": "2024-08-15T00:18:42.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
