@@ -1,0 +1,289 @@
+{
+  "rules": [
+    {
+      "key": "Button Clicked",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {},
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object"
+          }
+        }
+      },
+      "createdAt": "2024-08-07T23:30:30.000Z",
+      "updatedAt": "2024-08-07T23:30:30.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "First Event",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "array_prop1": {
+                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array)",
+                "items": {
+                  "properties": {
+                    "layer1_prop2": {
+                      "description": "this is an optional property on any items in the array_prop1 array",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "obj_prop1": {
+                "description": "this is required object (i.e. can have nested sub-properties)",
+                "properties": {
+                  "sub_prop1": {
+                    "description": "this is a required sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "sub_prop1"
+                ],
+                "type": "object"
+              },
+              "prop3": {
+                "description": "this is a single property",
+                "type": "string"
+              }
+            },
+            "required": [
+              "obj_prop1",
+              "prop3"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-08T18:08:19.000Z",
+      "updatedAt": "2024-08-08T18:08:19.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Obj Prop",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "description": "this is a single property",
+                "properties": {
+                  "int1": {
+                    "description": "this should be   a new property sd safd asdffasf",
+                    "type": "number"
+                  },
+                  "string": {
+                    "description": "this is a required sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "string"
+                ],
+                "type": "object"
+              },
+              "object2": {
+                "description": "this is a single property",
+                "properties": {
+                  "string": {
+                    "description": "this is a required sub-property in an object dsfa",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-08T18:08:19.000Z",
+      "updatedAt": "2024-08-15T00:01:30.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Obj Prop 2",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "description": "this is a single property",
+                "properties": {
+                  "int1": {
+                    "description": "this should be   a new property sd safd asdffasf",
+                    "type": "number"
+                  },
+                  "string": {
+                    "description": "this is a required sub-property in an object vsdfs",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "string"
+                ],
+                "type": "object"
+              },
+              "object2": {
+                "description": "this is a single property",
+                "properties": {
+                  "string": {
+                    "description": "this is a required sub-property in an object dsfa",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-15T00:13:19.000Z",
+      "updatedAt": "2024-08-15T00:13:19.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Second Event",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "array_prop1": {
+                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array)",
+                "items": {
+                  "properties": {
+                    "layer1_prop2": {
+                      "description": "this is an o ptional property on any items in the array_prop1 array",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "obj_prop1": {
+                "description": "tfhis is required obj ect (i.e. c an have nested sub-properties) fdasf",
+                "properties": {
+                  "sub_prop1": {
+                    "description": "this is a req uired sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "sub_prop1"
+                ],
+                "type": "object"
+              },
+              "prop3": {
+                "description": "this is a single property",
+                "type": "string"
+              }
+            },
+            "required": [
+              "obj_prop1",
+              "prop3"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-14T22:29:08.000Z",
+      "updatedAt": "2024-08-14T23:51:57.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Segment Consent Preference Updated",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "description": "DO NOT EDIT. Event generated to store end users consent preferences for Unify and Twilio Engage.",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object"
+          }
+        }
+      },
+      "createdAt": "2024-08-07T23:30:09.000Z",
+      "updatedAt": "2024-08-07T23:30:09.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    }
+  ]
+}
