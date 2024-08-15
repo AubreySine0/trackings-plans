@@ -46,7 +46,7 @@ rules:
         description: this is a single property dasf
         properties:
           string:
-            description: this is a required subfds-property in an object vsdfs  sdffds new descriotion
+            description: this is a required subfd dss-property in an object vsdfs  sdffds new descriotion
             type: string
             required: true
           int1:

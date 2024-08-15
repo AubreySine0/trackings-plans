@@ -89,6 +89,6 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property sadfas adfvad
+        description: this is a single property saddsffas adfvad
         type: string
         required: true

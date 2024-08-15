@@ -83,7 +83,7 @@ jobs:
             update-path: tracking-rules/javascript
             save-path: plans/javascript
             segment-id: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
-          # Add additional tracking plans here
+          # Add additional tracking plans here as needed
 
     steps:
     - name: Checkout repository
