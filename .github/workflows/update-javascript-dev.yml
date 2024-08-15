@@ -1,22 +1,20 @@
-name: Update Javascript Development Tracking Plan
+name: Update Development Tracking Plans
 
 on:
   push:
     branches-ignore:
       - main
     paths:
+      - 'tracking-rules/server/**.yml'
       - 'tracking-rules/javascript/**.yml'
 
 jobs:
-  update-tracking-plan:
+  update-tracking-plans:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        # This ensures you have access to push changes back to the repo
-        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -26,14 +24,28 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run update script
+    - name: Run update script for server
+      env:
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+        PLAN_DIR: tracking-rules/server
+      run: node scripts/update-tracking-plan.js
+
+    - name: Run save script for server
+      env:
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+        PLAN_DIR: plans/server
+      run: node scripts/save-tracking-plan.js
+
+    - name: Run update script for javascript
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
         PLAN_DIR: tracking-rules/javascript
       run: node scripts/update-tracking-plan.js
 
-    - name: Run save script
+    - name: Run save script for javascript
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
@@ -42,17 +54,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        # Configure git with GitHub Actions bot
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-        git pull origin ${{ github.ref }} --rebase
-        
-        # Add the modified file
-        git add plans/javascript/current-rules.json
-        
-        # Commit the changes with a message
-        git commit -m "Update javascript tracking plan rules [skip ci]"
-        
-        # Push the changes back to the current branch
+        git add plans/server/current-rules.json plans/javascript/current-rules.json
+        git commit -m "Update tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin ${{ github.ref }}
