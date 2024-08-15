@@ -30,7 +30,56 @@
 #         PLAN_DIR: tracking-rules/javascript
 #       run: node scripts/update-tracking-plan.js
 
-name: Update JavaScript Production Tracking Plan
+# name: Update JavaScript Production Tracking Plan
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'tracking-rules/javascript/**.yml'
+
+# jobs:
+#   update-and-save-tracking-plan:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#       with:
+#         fetch-depth: 2
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '14'
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Run update script
+#       env:
+#         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
+#         PLAN_DIR: tracking-rules/javascript
+#       run: node scripts/update-tracking-plan.js
+
+#     - name: Run save script
+#       env:
+#         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
+#         PLAN_DIR: plans/javascript
+#       run: node scripts/save-tracking-plan.js
+
+#     - name: Commit and push changes
+#       run: |
+#         git config --global user.name "github-actions[bot]" && \
+#         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
+#         git add plans/javascript/current-rules.json && \
+#         git commit -m "Update and save JavaScript tracking plan rules for production [skip ci]" || echo "No changes to commit" && \
+#         git push origin main
+
+name: Update Production Tracking Plans
 
 on:
   push:
@@ -38,9 +87,10 @@ on:
       - main
     paths:
       - 'tracking-rules/javascript/**.yml'
+      - 'tracking-rules/server/**.yml'
 
 jobs:
-  update-and-save-tracking-plan:
+  update-and-save-tracking-plans:
     runs-on: ubuntu-latest
 
     steps:
@@ -57,24 +107,40 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run update script
+    # JavaScript Tracking Plan
+    - name: Run update script for JavaScript
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
         PLAN_DIR: tracking-rules/javascript
       run: node scripts/update-tracking-plan.js
 
-    - name: Run save script
+    - name: Run save script for JavaScript
       env:
         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }}
         PLAN_DIR: plans/javascript
       run: node scripts/save-tracking-plan.js
 
+    # Server Tracking Plan
+    - name: Run update script for Server
+      env:
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+        PLAN_DIR: tracking-rules/server
+      run: node scripts/update-tracking-plan.js
+
+    - name: Run save script for Server
+      env:
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+        PLAN_DIR: plans/server
+      run: node scripts/save-tracking-plan.js
+
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]" && \
         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
-        git add plans/javascript/current-rules.json && \
-        git commit -m "Update and save JavaScript tracking plan rules for production [skip ci]" || echo "No changes to commit" && \
+        git add plans/javascript/current-rules.json plans/server/current-rules.json && \
+        git commit -m "Update and save tracking plan rules for production [skip ci]" || echo "No changes to commit" && \
         git push origin main
