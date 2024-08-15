@@ -121,6 +121,64 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
+      "key": "Obj Prop 3",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "description": "this is a single pro  perty blah blah blah",
+                "properties": {
+                  "int": {
+                    "description": "this is an optional sub-property in an object dsfas",
+                    "type": "number"
+                  },
+                  "string": {
+                    "description": "this is a required sub-property in an object sdas",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "string"
+                ],
+                "type": "object"
+              },
+              "object2": {
+                "description": "this is a single property",
+                "properties": {
+                  "string": {
+                    "description": "this is a required sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-15T00:13:21.000Z",
+      "updatedAt": "2024-08-15T00:16:55.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
       "key": "Second Event",
       "type": "TRACK",
       "version": 1,
