@@ -1,6 +1,7 @@
-- key: Third Event
+rules:
+  - key: Third Event
     type: TRACK
-    description: 
+    description: my thrid event
     version: 1
     labels:
       feature: journeys
