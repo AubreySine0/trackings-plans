@@ -7,6 +7,6 @@ rules:
       feature: journeys
     properties:
       prop1:
-        description: this is a single property again test hey there
+        description: this is a single property again test hey there again
         type: string
         required: true
