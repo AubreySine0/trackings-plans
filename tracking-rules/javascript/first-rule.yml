@@ -17,7 +17,7 @@ rules:
         items:
           properties:
             layer1_prop2:
-              description: this is an optional property on any items in the array_prop1 array sadf dsgds
+              description: this is an optional property on any items in the array_prop1 array sadf dsgds sgdfsgsd
               type: string
           type: object
         type: array
