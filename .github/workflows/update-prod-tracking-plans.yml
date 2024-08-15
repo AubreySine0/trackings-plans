@@ -155,6 +155,7 @@
 #         git add plans/javascript/current-rules.json plans/server/current-rules.json docs/javascript_tracking_plan.md docs/server_tracking_plan.md && \
 #         git commit -m "Update and save tracking plan rules and markdown for production [skip ci]" || echo "No changes to commit" && \
 #         git push origin main
+# 
 name: Update Production Tracking Plans and Generate Markdown
 
 on:
@@ -173,7 +174,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        fetch-depth: 10
+        fetch-depth: 10  # Increase fetch depth to ensure we have recent history  
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -203,22 +204,35 @@ jobs:
         PLAN_DIR=tracking-rules/server \
         node scripts/update-tracking-plan.js || echo "No changes detected for server"
 
+    # Debugging: List files to verify presence of current-rules.json
+    - name: List files in plans/javascript
+      run: ls -al plans/javascript/
+
+    - name: List files in plans/server
+      run: ls -al plans/server/
+
     # Generate markdown for JavaScript tracking plan
     - name: Generate markdown for JavaScript
       run: |
-        git diff --name-only HEAD^ HEAD | grep -q "plans/javascript/current-rules.json" && \
-        node scripts/render-tp.js "JavaScript Tracking Plan" "plans/javascript/current-rules.json" "docs/javascript_tracking_plan.md" || echo "No changes detected for JavaScript markdown"
+        if [ -f "plans/javascript/current-rules.json" ]; then
+          node scripts/render-tp.js "JavaScript Tracking Plan" "plans/javascript/current-rules.json" "docs/javascript_tracking_plan.md"
+        else
+          echo "JavaScript current-rules.json not found. Skipping markdown generation."
+        fi
 
     # Generate markdown for Server tracking plan
     - name: Generate markdown for Server
       run: |
-        git diff --name-only HEAD^ HEAD | grep -q "plans/server/current-rules.json" && \
-        node scripts/render-tp.js "Server Tracking Plan" "plans/server/current-rules.json" "docs/server_tracking_plan.md" || echo "No changes detected for Server markdown"
+        if [ -f "plans/server/current-rules.json" ]; then
+          node scripts/render-tp.js "Server Tracking Plan" "plans/server/current-rules.json" "docs/server_tracking_plan.md"
+        else
+          echo "Server current-rules.json not found. Skipping markdown generation."
+        fi
 
     - name: Commit and push changes
       run: |
-        git config --global user.name "github-actions[bot]" && \
-        git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
-        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md && \
-        git commit -m "Generate markdown for updated tracking plan rules [skip ci]" || echo "No changes to commit" && \
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+        git commit -m "Generate markdown for updated tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin main
