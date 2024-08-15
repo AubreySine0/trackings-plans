@@ -14,6 +14,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        # This ensures you have access to push changes back to the repo
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -30,3 +33,26 @@ jobs:
         PLAN_DIR: tracking-rules/server
       run: node scripts/update-tracking-plan.js
 
+    - name: Run save script
+      env:
+        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+        PLAN_DIR: plans/server
+      run: node scripts/save-tracking-plan.js
+
+    - name: Commit and push changes
+      run: |
+        # Configure git with GitHub Actions bot
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+        git pull origin ${{ github.ref }} --rebase
+        
+        # Add the modified file
+        git add plans/server/current-rules.json
+        
+        # Commit the changes with a message
+        git commit -m "Update server tracking plan rules [skip ci]"
+        
+        # Push the changes back to the current branch
+        git push origin ${{ github.ref }}

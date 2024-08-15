@@ -5,7 +5,7 @@ type: LIVE
 
 
 rules:
-  - key: First Event
+  - key: First Event 
     type: TRACK
     description: 
     version: 1
@@ -31,11 +31,11 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property
+        description: this is a single property sdfas
         type: string
         required: true
 
-  - key: Obj Prop
+  - key: Obj Prop 3
     type: TRACK
     description: 
     version: 1
@@ -43,7 +43,7 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single property blah blah blah
+        description: this is a single pro  perty blah blah blah  afdg
         properties:
           string:
             description: this is a required sub-property in an object sdas
@@ -89,6 +89,6 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property
+        description: this is a single property sadfas adfvad
         type: string
         required: true

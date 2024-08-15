@@ -35,7 +35,7 @@ rules:
         type: string
         required: true
 
-  - key: Obj Prop
+  - key: Obj Prop 2
     type: TRACK
     description: 
     version: 1
@@ -43,14 +43,14 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single property
+        description: this is a single property dasf
         properties:
           string:
-            description: this is a required sub-property in an object
+            description: this is a required subfds-property in an object vsdfs  sdffds
             type: string
             required: true
           int1:
-            description: this should be a new property sd safd
+            description: this should be   a new propertydd sd safd asdffasf
             type: number
         type: object
         required: true    
@@ -59,7 +59,7 @@ rules:
         description: this is a single property
         properties:
           string:
-            description: this is a required sub-property in an object
+            description: this is a required sub-property in an object dsfa
             type: string
         type: object
   - key: Second Event
