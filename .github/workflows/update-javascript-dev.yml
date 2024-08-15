@@ -173,7 +173,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # Update, commit, and push for server
+    # Run update scripts for both server and JavaScript without committing
     - name: Run update script for server
       run: |
         echo "Checking for changes in server tracking plan"
@@ -192,43 +192,30 @@ jobs:
         PLAN_DIR=plans/server \
         node scripts/save-tracking-plan.js || echo "No changes detected for server"
 
-    - name: Commit and push changes for server
+    - name: Run update script for JavaScript
       run: |
-        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
-        git config --global user.name "github-actions[bot]" && \
-        git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
-        git add plans/server/current-rules.json && \
-        git commit -m "Update server tracking plan rules [skip ci]" || echo "No changes to commit" && \
-        git push origin ${{ github.ref }}
-
-    # Fresh checkout for javascript
-    - name: Checkout repository again for javascript
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2  # Ensure the last two commits are available
-
-    - name: Reinstall dependencies for JavaScript plan
-      run: npm install  # Reinstall dependencies to ensure the environment is set up
-
-    # Update, commit, and push for javascript
-    - name: Run update script for javascript
-      run: |
-        echo "Checking for changes in javascript tracking plan"
+        echo "Checking for changes in JavaScript tracking plan"
         git diff --name-only HEAD^ HEAD
         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
         PLAN_DIR=tracking-rules/javascript \
-        node scripts/update-tracking-plan.js || echo "No changes detected for javascript"
+        node scripts/update-tracking-plan.js || echo "No changes detected for JavaScript"
 
-    - name: Stage changes before pulling
+    - name: Run save script for JavaScript
       run: |
-        git add plans/javascript/current-rules.json
+        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+        PLAN_DIR=plans/javascript \
+        node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
-    - name: Pull, rebase, and push changes for javascript
+    # Stage, commit, and push all changes together
+    - name: Commit and push all changes
       run: |
         git config --global user.name "github-actions[bot]" && \
         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
-        git pull origin ${{ github.ref }} --rebase  # Pull latest changes before committing
-        git commit -m "Update javascript tracking plan rules [skip ci]" || echo "No changes to commit" && \
+        git add plans/server/current-rules.json plans/javascript/current-rules.json && \
+        git commit -m "Update tracking plan rules for server and JavaScript [skip ci]" || echo "No changes to commit" && \
+        git pull origin ${{ github.ref }} --rebase && \
         git push origin ${{ github.ref }}
