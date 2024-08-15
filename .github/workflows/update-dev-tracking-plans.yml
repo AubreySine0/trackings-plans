@@ -113,7 +113,7 @@ jobs:
         PLAN_DIR=plans/server \
         node scripts/save-tracking-plan.js || echo "No changes detected for server"
 
-        # Commit and push changes to the branch
+    # Commit and push changes to the branch
     - name: Commit and push changes
       run: |
           git config --global user.name "github-actions[bot]"
