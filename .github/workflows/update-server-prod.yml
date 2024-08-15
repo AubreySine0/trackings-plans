@@ -1,31 +1,31 @@
-name: Update Server Production Tracking Plan
+# name: Update Server Production Tracking Plan
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'tracking-rules/server/**.yml'
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'tracking-rules/server/**.yml'
 
-jobs:
-  update-tracking-plan:
-    runs-on: ubuntu-latest
+# jobs:
+#   update-tracking-plan:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+#     - name: Install dependencies
+#       run: npm install
 
-    - name: Run update script
-      env:
-        SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
-        SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }}
-        PLAN_DIR: tracking-rules/server
-      run: node scripts/update-tracking-plan.js
+#     - name: Run update script
+#       env:
+#         SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+#         SEGMENT_TRACKING_PLAN_ID: ${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }}
+#         PLAN_DIR: tracking-rules/server
+#       run: node scripts/update-tracking-plan.js
