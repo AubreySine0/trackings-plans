@@ -55,7 +55,7 @@
                 "description": "this is required object (i.e. can have nested sub-properties)",
                 "properties": {
                   "sub_prop1": {
-                    "description": "this is a required sub-property in an object here",
+                    "description": "this is a required sub-property in an object",
                     "type": "string"
                   }
                 },
@@ -80,7 +80,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-15T23:09:40.000Z",
+      "updatedAt": "2024-08-15T23:14:23.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -303,7 +303,7 @@
             "type": "object",
             "properties": {
               "prop2": {
-                "description": "this is a single property again test hey there again",
+                "description": "this is a single property",
                 "type": "string"
               }
             },
@@ -317,7 +317,7 @@
         ]
       },
       "createdAt": "2024-08-15T18:53:05.000Z",
-      "updatedAt": "2024-08-15T21:31:48.000Z",
+      "updatedAt": "2024-08-15T23:14:23.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
