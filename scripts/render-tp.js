@@ -13,7 +13,7 @@ const jsonData = fs.readFileSync(jsonPath, 'utf8');
 const json = JSON.parse(jsonData);
 
 /// CHANGE 1 - rename .data.trackingPlan. to .rules. ///
-const trackEvents = json.rules.events;
+const trackEvents = json.rules;
 
 let formattedEvents = [];
 let header = tpTitle + '\n';
