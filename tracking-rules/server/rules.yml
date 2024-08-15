@@ -35,7 +35,7 @@ rules:
         type: string
         required: true
 
-  - key: Obj Prop 2
+  - key: Obj Prop 3
     type: TRACK
     description: 
     version: 1
