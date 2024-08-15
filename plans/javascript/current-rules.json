@@ -49,7 +49,7 @@
                 "items": {
                   "properties": {
                     "layer1_prop2": {
-                      "description": "this is an optional property on any items in the array_prop1",
+                      "description": "this is an optional property on any items in the array_prop1  change here",
                       "type": "string"
                     }
                   },
@@ -86,7 +86,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-15T23:50:56.000Z",
+      "updatedAt": "2024-08-15T23:54:56.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
