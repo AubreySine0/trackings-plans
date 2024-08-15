@@ -122,12 +122,17 @@ jobs:
         PLAN_DIR: ${{ matrix.tracking-plan.save-path }}
       run: node scripts/save-tracking-plan.js
 
-    - name: Commit and push changes
+    - name: Commit changes before pulling
       if: env.files_changed == 'true'
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git pull origin ${{ github.ref }} --rebase  # Pull latest changes and rebase
         git add ${{ matrix.tracking-plan.save-path }}/current-rules.json
-        git commit -m "Update tracking plan rules [skip ci]" || echo "No changes to commit"
+        git commit -m "Pre-pull commit for tracking plan rules [skip ci]" || echo "No changes to commit"
+        git pull origin ${{ github.ref }} --rebase  # Pull latest changes and rebase
+
+    - name: Push final changes
+      if: env.files_changed == 'true'
+      run: |
         git push origin ${{ github.ref }}
+
