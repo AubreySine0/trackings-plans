@@ -58,8 +58,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:17:33.000Z",
-      "updatedAt": "2024-08-15T16:33:30.000Z",
+      "createdAt": "2024-08-08T18:23:59.000Z",
+      "updatedAt": "2024-08-15T18:07:51.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -116,8 +116,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:17:33.000Z",
-      "updatedAt": "2024-08-14T22:58:13.000Z",
+      "createdAt": "2024-08-08T18:23:59.000Z",
+      "updatedAt": "2024-08-14T22:59:51.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -141,7 +141,7 @@
                 "description": "this is a single property hey hey",
                 "properties": {
                   "int": {
-                    "description": "this is an optional sub-property in an object",
+                    "description": "this is an optional sub-property in an object hey",
                     "type": "number"
                   },
                   "string": {
@@ -174,8 +174,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-15T00:13:21.000Z",
-      "updatedAt": "2024-08-15T18:41:40.000Z",
+      "createdAt": "2024-08-15T00:25:26.000Z",
+      "updatedAt": "2024-08-15T21:05:08.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -236,8 +236,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-14T22:29:07.000Z",
-      "updatedAt": "2024-08-15T18:09:02.000Z",
+      "createdAt": "2024-08-14T22:31:15.000Z",
+      "updatedAt": "2024-08-15T18:10:58.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -260,8 +260,8 @@
           }
         }
       },
-      "createdAt": "2024-08-08T18:15:52.000Z",
-      "updatedAt": "2024-08-08T18:15:52.000Z",
+      "createdAt": "2024-08-08T18:15:36.000Z",
+      "updatedAt": "2024-08-08T18:15:36.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
