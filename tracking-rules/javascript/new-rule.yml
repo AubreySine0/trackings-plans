@@ -6,7 +6,7 @@ rules:
     labels:
       feature: journeys
     properties:
-      prop2:
+      prop1:
         description: this is a single property #test
         type: string
         required: true
