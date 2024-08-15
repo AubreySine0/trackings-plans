@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { execSync } = require('child_process');
+const path = require('path');
 const os = require('os');
 
 // Get arguments from the command line
@@ -7,8 +7,10 @@ const tpTitle = process.argv[2];
 const jsonSourcePath = process.argv[3];
 const markdownTargetPath = process.argv[4];
 
-// Load the JSON data
-const json = require(jsonSourcePath);
+// Load the JSON data using fs.readFileSync and JSON.parse
+const jsonPath = path.resolve(jsonSourcePath);
+const jsonData = fs.readFileSync(jsonPath, 'utf8');
+const json = JSON.parse(jsonData);
 
 /// CHANGE 1 - rename .data.trackingPlan. to .rules. ///
 const trackEvents = json.rules.events;
@@ -17,11 +19,11 @@ let formattedEvents = [];
 let header = tpTitle + '\n';
 formattedEvents.push(header);
 for (let event of trackEvents) {
-    formattedEvent = [];
+    let formattedEvent = [];
     formattedEvent.push('\n');
 
     formattedEvent.push('### ' + event.name + '\n');
-    eventData = event.rules.properties;
+    let eventData = event.rules.properties;
 
     formattedEvent.push('<!-- tabs:start -->');
     formattedEvent.push('#### **Basics**' + '\n');
@@ -30,22 +32,22 @@ for (let event of trackEvents) {
     formattedEvent.push('|**Name** | `Type` | Description | Required?|');
     formattedEvent.push('| :--- | :--- | :--- | :---|' );
     for (let propName in eventData.properties.properties) {
-            let propData = eventData.properties;
-            let propType = propData.properties[propName].type;
-            formattedEvent.push('|**' + propName  + '** | `' + propType + '` |...|Required/Optional|' )
-        }
+        let propData = eventData.properties;
+        let propType = propData.properties[propName].type;
+        formattedEvent.push('|**' + propName  + '** | `' + propType + '` |...|Required/Optional|' );
+    }
 
     formattedEvent.push('#### **JS**'+ '\n');
     formattedEvent.push('```javascript');
-    formattedEvent.push('analytics.track("'+ event.name +'" {')
+    formattedEvent.push('analytics.track("'+ event.name +'" {');
 
     for (let propName in eventData.properties.properties) {
-            let propData = eventData.properties;
-            let propType = propData.properties[propName].type;
-            formattedEvent.push('"' + propName  + '": "<<' + propType + '>>"' )
-        }
-    formattedEvent.push('});')
-    formattedEvent.push('```' + ' \n')
+        let propData = eventData.properties;
+        let propType = propData.properties[propName].type;
+        formattedEvent.push('"' + propName  + '": "<<' + propType + '>>"' );
+    }
+    formattedEvent.push('});');
+    formattedEvent.push('```' + ' \n');
     formattedEvent.push('<!-- tabs:end -->' + '\n');
     formattedEvent.push('<!-- panels:end -->' + '\n');
     formattedEvents.push.apply(formattedEvents, formattedEvent);
