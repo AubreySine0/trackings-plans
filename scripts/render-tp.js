@@ -22,8 +22,8 @@ for (let event of trackEvents) {
     let formattedEvent = [];
     formattedEvent.push('\n');
 
-    formattedEvent.push('### ' + event.name + '\n');
-    let eventData = event.rules.properties;
+    formattedEvent.push('### ' + event.key + '\n');
+    let eventData = event.jsonSchema.properties;
 
     formattedEvent.push('<!-- tabs:start -->');
     formattedEvent.push('#### **Basics**' + '\n');
