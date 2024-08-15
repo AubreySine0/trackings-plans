@@ -13,7 +13,7 @@ rules:
       feature: journeys
     properties:
       array_prop1:
-        description: this is an array property (it will specify  "items", keys that need to exist for each item in the array)
+        description: this is an array property (it will specify  "items", keys that need to exist for each item in the array) asf
         items:
           properties:
             layer1_prop2:
