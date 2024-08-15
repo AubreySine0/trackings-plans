@@ -1,7 +1,7 @@
 name: guardrails - Comprehensive Example
 type: LIVE
 #try again
-# just to fire automation fdg fgf
+# just to fire automation 
 
 
 rules:
@@ -25,7 +25,7 @@ rules:
         description: this is required object (i.e. can have nested sub-properties) 
         properties:
           sub_prop1:
-            description: this is a required sub-property in an object
+            description: this is a required sub-property in an object here
             type: string
             required: true
         type: object
@@ -37,13 +37,13 @@ rules:
 
   - key: Obj Prop 2
     type: TRACK
-    description: 
+    description: description here again again
     version: 1
     labels:
       feature: journeys
     properties:
       object:
-        description: this is a single property 
+        description: this is a single property  here
         properties:
           string:
             description: this is a required sub-property in an object 
