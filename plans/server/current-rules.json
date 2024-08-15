@@ -209,7 +209,7 @@
                 "type": "array"
               },
               "obj_prop1": {
-                "description": "this is required object (i.e. can have nested sub-properties) sfdsfsdsd sdfdsfadsdf sdfsdfsd",
+                "description": "this is required object (i.e. can have nested sub-properties) sfdsfsdsd sdfdsfadsdf sdfsdfsd asfsd",
                 "properties": {
                   "sub_prop1": {
                     "description": "this is a required sub-property in an object",
@@ -237,7 +237,7 @@
         ]
       },
       "createdAt": "2024-08-14T22:29:07.000Z",
-      "updatedAt": "2024-08-15T16:36:15.000Z",
+      "updatedAt": "2024-08-15T16:41:11.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
