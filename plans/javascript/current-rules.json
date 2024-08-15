@@ -39,11 +39,11 @@
             "type": "object",
             "properties": {
               "array_prop1": {
-                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array)",
+                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array) asf sdfgs",
                 "items": {
                   "properties": {
                     "layer1_prop2": {
-                      "description": "this is an optional property on any items in the array_prop1 array sadf dsgds sgdfsgsd",
+                      "description": "this is an optional property on any items in the array_prop1 array  fdsfasfafs fsdfds safdsdsf  bsdfgsd",
                       "type": "string"
                     }
                   },
@@ -52,10 +52,10 @@
                 "type": "array"
               },
               "obj_prop1": {
-                "description": "this is required object (i.e. can have nested sub-properties) sadf",
+                "description": "this is required object (i.e. can have nested sub-properties) sadf asfsd sffsd",
                 "properties": {
                   "sub_prop1": {
-                    "description": "this is a required sub-property in an object here sdfg",
+                    "description": "this is a required sub-property in an object here sdfg sdgdf asflkjhsafsjdhffsdaf  sd",
                     "type": "string"
                   }
                 },
@@ -80,7 +80,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-15T16:24:18.000Z",
+      "updatedAt": "2024-08-15T16:57:14.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
