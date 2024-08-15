@@ -210,12 +210,23 @@ jobs:
         PLAN_DIR=plans/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
-    # Stage, commit, and push all changes together
+    # Stash, pull with rebase, apply stash, commit, and push all changes together
+    - name: Stash changes
+      run: |
+        git stash -u  # Stash all untracked and tracked changes
+
+    - name: Pull latest changes and rebase
+      run: |
+        git pull origin ${{ github.ref }} --rebase  # Pull latest changes before committing
+
+    - name: Apply stashed changes
+      run: |
+        git stash pop  # Apply the stashed changes back to the working directory
+
     - name: Commit and push all changes
       run: |
         git config --global user.name "github-actions[bot]" && \
         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
         git add plans/server/current-rules.json plans/javascript/current-rules.json && \
         git commit -m "Update tracking plan rules for server and JavaScript [skip ci]" || echo "No changes to commit" && \
-        git pull origin ${{ github.ref }} --rebase && \
         git push origin ${{ github.ref }}
