@@ -159,14 +159,14 @@
             "type": "object",
             "properties": {
               "object": {
-                "description": "this is a single property dasf",
+                "description": "this is a single property",
                 "properties": {
                   "int1": {
-                    "description": "this shouldfdf be   a new propertydd sd safd asdffasf",
+                    "description": "this should be a new property",
                     "type": "number"
                   },
                   "string": {
-                    "description": "this is a required subfd dss-property in an object vsdfs  sdffds new descriotion",
+                    "description": "this is a required property in an object new descriotion",
                     "type": "string"
                   }
                 },
@@ -196,7 +196,7 @@
         ]
       },
       "createdAt": "2024-08-15T00:13:19.000Z",
-      "updatedAt": "2024-08-15T16:22:05.000Z",
+      "updatedAt": "2024-08-15T18:41:41.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
