@@ -201,7 +201,7 @@ const rules = loadYamlFiles(changedFiles).map(rule => {
     key: rule.key,
     type: rule.type,
     version: rule.version,
-    description: rule.description, // Include description if available
+    description: rule.description ?? "", // Include description if available
     jsonSchema,
   };
 });
