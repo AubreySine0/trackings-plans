@@ -1,0 +1,73 @@
+name: Update Production Tracking Plans
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tracking-rules/javascript/**.yml'
+      - 'tracking-rules/server/**.yml'
+
+jobs:
+  update-and-save-tracking-plans:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 2  # Fetch the last two commits so HEAD^ is available
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    # JavaScript Tracking Plan
+    - name: Run update script for JavaScript
+      run: |
+        echo "Checking for changes in JavaScript tracking plan"
+        git diff --name-only HEAD^ HEAD
+        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+        PLAN_DIR=tracking-rules/javascript \
+        node scripts/update-tracking-plan.js || echo "No changes detected for JavaScript"
+
+    - name: Run save script for JavaScript
+      run: |
+        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+        PLAN_DIR=plans/javascript \
+        node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
+
+    # Server Tracking Plan
+    - name: Run update script for Server
+      run: |
+        echo "Checking for changes in server tracking plan"
+        git diff --name-only HEAD^ HEAD
+        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+        PLAN_DIR=tracking-rules/server \
+        node scripts/update-tracking-plan.js || echo "No changes detected for server"
+
+    - name: Run save script for Server
+      run: |
+        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+        PLAN_DIR=plans/server \
+        node scripts/save-tracking-plan.js || echo "No changes detected for server"
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]" && \
+        git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
+        git add plans/javascript/current-rules.json plans/server/current-rules.json && \
+        git commit -m "Update and save tracking plan rules for production [skip ci]" || echo "No changes to commit" && \
+        git push origin main
