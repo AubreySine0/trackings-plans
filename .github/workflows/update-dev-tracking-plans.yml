@@ -112,3 +112,12 @@ jobs:
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
         PLAN_DIR=plans/server \
         node scripts/save-tracking-plan.js || echo "No changes detected for server"
+
+        # Commit and push changes to the branch
+    - name: Commit and push changes
+      run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add plans/javascript/current-rules.json plans/server/current-rules.json
+          git commit -m "Update current-rules.json for development tracking plans [skip ci]" || echo "No changes to commit"
+          git push origin ${{ github.ref }}
