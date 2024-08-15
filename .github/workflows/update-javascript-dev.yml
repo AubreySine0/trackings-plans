@@ -221,20 +221,14 @@ jobs:
         PLAN_DIR=tracking-rules/javascript \
         node scripts/update-tracking-plan.js || echo "No changes detected for javascript"
 
-    - name: Run save script for javascript
+    - name: Stage changes before pulling
       run: |
-        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/javascript \
-        node scripts/save-tracking-plan.js || echo "No changes detected for javascript"
+        git add plans/javascript/current-rules.json
 
-    - name: Pull, commit, and push changes for javascript
+    - name: Pull, rebase, and push changes for javascript
       run: |
-        git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
         git config --global user.name "github-actions[bot]" && \
         git config --global user.email "github-actions[bot]@users.noreply.github.com" && \
         git pull origin ${{ github.ref }} --rebase  # Pull latest changes before committing
-        git add plans/javascript/current-rules.json && \
         git commit -m "Update javascript tracking plan rules [skip ci]" || echo "No changes to commit" && \
         git push origin ${{ github.ref }}
