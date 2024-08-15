@@ -7,7 +7,7 @@ const { execSync } = require('child_process');
 // Get environment variables
 const planDir = process.env.PLAN_DIR;
 const trackingPlanId = process.env.SEGMENT_TRACKING_PLAN_ID;
-const apiUrl = `https://api.segmentapis.com/tracking-plans/${trackingPlanId}/rules?count=50`;
+const apiUrl = `https://api.segmentapis.com/tracking-plans/${trackingPlanId}/rules`;
 const apiKey = process.env.SEGMENT_API_KEY;
 
 console.log('API key:', apiKey);
@@ -20,17 +20,14 @@ function getChangedFiles(directory) {
   return changedFiles.filter(file => file.startsWith(directory) && file.endsWith('.yml'));
 }
 
-// Function to load all YAML files from the directory
-function loadYamlFiles(directory) {
-  const files = fs.readdirSync(directory);
+// Function to load YAML files from an array of file paths
+function loadYamlFiles(files) {
   let allRules = [];
 
   files.forEach(file => {
-    if (path.extname(file) === '.yml') {
-      const fileContents = fs.readFileSync(path.join(directory, file), 'utf8');
-      const data = yaml.load(fileContents);
-      allRules = allRules.concat(data.rules);
-    }
+    const fileContents = fs.readFileSync(file, 'utf8');
+    const data = yaml.load(fileContents);
+    allRules = allRules.concat(data.rules);
   });
 
   console.log('Loaded rules:', allRules);
