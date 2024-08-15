@@ -79,7 +79,7 @@ rules:
           type: object
         type: array
       obj_prop1:
-        description: tfhis is required obj ect (i.e. c an have nested sub-properties) fdasf
+        description: tfhis is required obj ect (i.e. c an have nested sub-properties) 
         properties:
           sub_prop1:
             description: this is a req uired sub-property in an object
