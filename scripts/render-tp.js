@@ -39,7 +39,7 @@ for (let event of trackEvents) {
 
     formattedEvent.push('#### **JS**'+ '\n');
     formattedEvent.push('```javascript');
-    formattedEvent.push('analytics.track("'+ event.name +'" {');
+    formattedEvent.push('analytics.track("'+ event.key +'" {');
 
     for (let propName in eventData.properties.properties) {
         let propData = eventData.properties;
