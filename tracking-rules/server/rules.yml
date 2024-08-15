@@ -31,7 +31,7 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property
+        description: this is a single property sdfas
         type: string
         required: true
 

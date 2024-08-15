@@ -43,7 +43,7 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single property
+        description: this is a single property dasf
         properties:
           string:
             description: this is a required sub-property in an object vsdfs
