@@ -39,7 +39,7 @@
             "type": "object",
             "properties": {
               "array_prop1": {
-                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array)",
+                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array) asf sdfgs",
                 "items": {
                   "properties": {
                     "layer1_prop2": {
@@ -52,10 +52,10 @@
                 "type": "array"
               },
               "obj_prop1": {
-                "description": "this is required object (i.e. can have nested sub-properties)",
+                "description": "this is required object (i.e. can have nested sub-properties) sadf asfsd sffsd",
                 "properties": {
                   "sub_prop1": {
-                    "description": "this is a required sub-property in an object",
+                    "description": "this is a required sub-property in an object here",
                     "type": "string"
                   }
                 },
@@ -80,7 +80,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-08T18:08:19.000Z",
+      "updatedAt": "2024-08-15T18:01:05.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -162,11 +162,11 @@
                 "description": "this is a single property dasf",
                 "properties": {
                   "int1": {
-                    "description": "this should be   a new propertydd sd safd asdffasf",
+                    "description": "this shouldfdf be   a new propertydd sd safd asdffasf",
                     "type": "number"
                   },
                   "string": {
-                    "description": "this is a required subfds-property in an object vsdfs  sdffds",
+                    "description": "this is a required subfd dss-property in an object vsdfs  sdffds new descriotion",
                     "type": "string"
                   }
                 },
@@ -196,7 +196,7 @@
         ]
       },
       "createdAt": "2024-08-15T00:13:19.000Z",
-      "updatedAt": "2024-08-15T00:22:07.000Z",
+      "updatedAt": "2024-08-15T16:22:05.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -221,7 +221,7 @@
                 "items": {
                   "properties": {
                     "layer1_prop2": {
-                      "description": "this is an o ptional property on any items in the array_prop1 array",
+                      "description": "this is an o ptional property on any items in the array_prop1 array safd",
                       "type": "string"
                     }
                   },
@@ -230,7 +230,7 @@
                 "type": "array"
               },
               "obj_prop1": {
-                "description": "tfhis is required obj ect (i.e. c an have nested sub-properties) fdasf",
+                "description": "tfhis is required obj ect (i.e. c an have nested sub-properties)",
                 "properties": {
                   "sub_prop1": {
                     "description": "this is a req uired sub-property in an object",
@@ -258,7 +258,7 @@
         ]
       },
       "createdAt": "2024-08-14T22:29:08.000Z",
-      "updatedAt": "2024-08-14T23:51:57.000Z",
+      "updatedAt": "2024-08-15T16:22:05.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {

@@ -13,16 +13,16 @@ rules:
       feature: journeys
     properties:
       array_prop1:
-        description: this is an array property (it will specify  "items", keys that need to exist for each item in the array)
+        description: this is an array property (it will specify  "items", keys that need to exist for each item in the array)  asdasd
         items:
           properties:
             layer1_prop2:
-              description: this is an optional property on any items in the array_prop1 array
+              description: this is an optional property on any items in the array_prop1 array dsg
               type: string
           type: object
         type: array
       obj_prop1:
-        description: this is required object (i.e. can have nested sub-properties)
+        description: this is required object (i.e. can have nested sub-properties) sfdfsd
         properties:
           sub_prop1:
             description: this is a required sub-property in an object
@@ -43,7 +43,7 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single pro  perty blah blah blah  afdg
+        description: this is a single pro  perty blah blah blah  afdg asf
         properties:
           string:
             description: this is a required sub-property in an object sdas
@@ -89,6 +89,6 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property sadfas adfvad
+        description: this is a single property saddsffas adfvad
         type: string
         required: true
