@@ -1,0 +1,12 @@
+rules:
+  - key: Third Event
+    type: TRACK
+    description: my thrid event
+    version: 1
+    labels:
+      feature: journeys
+    properties:
+      prop3:
+        description: this is a single property #test
+        type: string
+        required: true

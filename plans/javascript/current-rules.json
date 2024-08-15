@@ -284,6 +284,41 @@
       "createdAt": "2024-08-07T23:30:09.000Z",
       "updatedAt": "2024-08-07T23:30:09.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Third Event",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "prop3": {
+                "description": "this is a single property",
+                "type": "string"
+              }
+            },
+            "required": [
+              "prop3"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-15T18:53:05.000Z",
+      "updatedAt": "2024-08-15T18:53:05.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
 }
