@@ -39,7 +39,7 @@
             "type": "object",
             "properties": {
               "array_prop1": {
-                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array) test again",
+                "description": "this is an array property (it will specify  \"items\", keys that need to exist for each item in the array) test again again",
                 "items": {
                   "properties": {
                     "layer1_prop2": {
@@ -80,7 +80,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-15T21:50:28.000Z",
+      "updatedAt": "2024-08-15T22:30:59.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {

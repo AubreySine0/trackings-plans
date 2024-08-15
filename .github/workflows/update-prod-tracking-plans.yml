@@ -207,13 +207,13 @@ jobs:
     - name: Generate markdown for JavaScript
       run: |
         git diff --name-only HEAD^ HEAD | grep -q "plans/javascript/current-rules.json" && \
-        node render-tp.js "JavaScript Tracking Plan" "plans/javascript/current-rules.json" "docs/javascript_tracking_plan.md" || echo "No changes detected for JavaScript markdown"
+        node scripts/render-tp.js "JavaScript Tracking Plan" "plans/javascript/current-rules.json" "docs/javascript_tracking_plan.md" || echo "No changes detected for JavaScript markdown"
 
     # Generate markdown for Server tracking plan
     - name: Generate markdown for Server
       run: |
         git diff --name-only HEAD^ HEAD | grep -q "plans/server/current-rules.json" && \
-        node render-tp.js "Server Tracking Plan" "plans/server/current-rules.json" "docs/server_tracking_plan.md" || echo "No changes detected for Server markdown"
+        node scripts/render-tp.js "Server Tracking Plan" "plans/server/current-rules.json" "docs/server_tracking_plan.md" || echo "No changes detected for Server markdown"
 
     - name: Commit and push changes
       run: |
