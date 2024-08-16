@@ -7,7 +7,7 @@ JavaScript Tracking Plan
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -30,7 +30,7 @@ analytics.track("Button Clicked" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -59,7 +59,7 @@ analytics.track("First Event" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -86,7 +86,7 @@ analytics.track("Obj Prop" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -113,7 +113,7 @@ analytics.track("Obj Prop 2" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -142,7 +142,7 @@ analytics.track("Second Event" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
@@ -165,7 +165,7 @@ analytics.track("Segment Consent Preference Updated" {
 <!-- tabs:start -->
 #### **Basics**
 
-
+No description provided
 #### **Properties**
 
 |**Name** | `Type` | Description | Required?|
