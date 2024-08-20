@@ -38,7 +38,7 @@ rules:
             required: true
         type: object
         required: true   #test
-      prop3:
+      prop4:
         description: this is a single property change change here
         type: string
         required: true
