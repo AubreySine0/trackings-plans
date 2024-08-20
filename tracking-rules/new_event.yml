@@ -38,14 +38,14 @@ rules:
             required: true
         type: object
         required: true   #test
-      prop3:
-        description: this is a single property
+      prop4:
+        description: this is a single property change change here
         type: string
         required: true
 
   - key: Obj Prop
     type: TRACK
-    description: 
+    description: description here
     version: 1
     labels:
       feature: journeys
