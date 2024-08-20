@@ -45,7 +45,7 @@ rules:
 
   - key: Obj Prop
     type: TRACK
-    description: 
+    description: description here
     version: 1
     labels:
       feature: journeys
