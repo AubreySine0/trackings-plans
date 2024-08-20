@@ -31,7 +31,7 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property and stuff
+        description: this is a single property and stuff stuff and more
         type: string
         required: true
 
