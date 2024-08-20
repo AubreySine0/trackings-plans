@@ -39,7 +39,7 @@ rules:
         type: object
         required: true   #test
       prop3:
-        description: this is a single property change
+        description: this is a single property change change here
         type: string
         required: true
 
