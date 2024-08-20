@@ -92,7 +92,7 @@ jobs:
         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/javascript \
+        PLAN_DIR=plans/dev/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
     # Update and save scripts for Server tracking plan
@@ -110,7 +110,7 @@ jobs:
         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
-        PLAN_DIR=plans/server \
+        PLAN_DIR=plans/dev/server \
         node scripts/save-tracking-plan.js || echo "No changes detected for server"
 
     # Commit and push changes to the branch
