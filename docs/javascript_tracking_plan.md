@@ -2,29 +2,6 @@ JavaScript Tracking Plan
 
 
 
-### Button Clicked
-
-<!-- tabs:start -->
-#### **Basics**
-
-No description provided
-#### **Properties**
-
-|**Name** | `Type` | Description | Required?|
-| :--- | :--- | :--- | :---|
-#### **JS**
-
-```javascript
-analytics.track("Button Clicked" {
-});
-``` 
-
-<!-- tabs:end -->
-
-<!-- panels:end -->
-
-
-
 ### First Event
 
 <!-- tabs:start -->
@@ -35,14 +12,14 @@ No description provided
 
 |**Name** | `Type` | Description | Required?|
 | :--- | :--- | :--- | :---|
-|**array_prop1** | `array` |...|Required/Optional|
+|**array_prop2** | `array` |...|Required/Optional|
 |**obj_prop1** | `object` |...|Required/Optional|
 |**prop3** | `string` |...|Required/Optional|
 #### **JS**
 
 ```javascript
 analytics.track("First Event" {
-"array_prop1": "<<array>>"
+"array_prop2": "<<array>>"
 "obj_prop1": "<<object>>"
 "prop3": "<<string>>"
 });
