@@ -33,7 +33,7 @@ rules:
         description: this is required object (i.e. can have nested sub-properties)
         properties:
           sub_prop1:
-            description: this is a required sub-property in an object
+            description: this is a required sub-property in an object here he
             type: string
             required: true
         type: object
