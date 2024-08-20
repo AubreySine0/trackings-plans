@@ -200,7 +200,7 @@ jobs:
         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/prod/server \
+        PLAN_DIR=plans/prod/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
     # Update Server Tracking Plan
