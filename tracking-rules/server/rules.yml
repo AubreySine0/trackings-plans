@@ -43,10 +43,10 @@ rules:
       feature: journeys
     properties:
       object:
-        description: this is a single property  here
+        description: this is a single property  here here too
         properties:
           string:
-            description: this is a required sub-property in an object 
+            description: this is a required sub-property in an object here
             type: string
             required: true
           int:
