@@ -12,7 +12,7 @@ rules:
     labels:
       feature: journeys
     properties:
-      array_prop1:
+      array_prop2:
         description: this is an array property (it will specify  "items", keys that need to exist for each item in the array) 
         items:
           properties:
