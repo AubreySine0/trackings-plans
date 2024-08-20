@@ -231,7 +231,7 @@ jobs:
     # Generate markdown for JavaScript tracking plan
     - name: Generate markdown for JavaScript
       run: |
-        if [ -f "plans/prod/javascript/current-rules.json" ]; then
+        if [ -f "plans/dev/javascript/current-rules.json" ]; then
           node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "docs/javascript_tracking_plan.md"
         else
           echo "JavaScript current-rules.json not found. Skipping markdown generation."
@@ -240,7 +240,7 @@ jobs:
     # Generate markdown for Server tracking plan
     - name: Generate markdown for Server
       run: |
-        if [ -f "plans/prod/server/current-rules.json" ]; then
+        if [ -f "plans/dev/server/current-rules.json" ]; then
           node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md"
         else
           echo "Server current-rules.json not found. Skipping markdown generation."
