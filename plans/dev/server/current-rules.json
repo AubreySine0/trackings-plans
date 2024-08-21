@@ -327,11 +327,11 @@
                 "description": "this is a single",
                 "properties": {
                   "int": {
-                    "description": "this is an optional sub-property in an object hey hey",
+                    "description": "this is an optional sub-property in an object",
                     "type": "number"
                   },
                   "string": {
-                    "description": "this is a required sub-property in an object here",
+                    "description": "this is a required sub-property in an objec",
                     "type": "integer"
                   }
                 },
@@ -361,7 +361,7 @@
         ]
       },
       "createdAt": "2024-08-21T16:48:44.000Z",
-      "updatedAt": "2024-08-21T16:52:12.000Z",
+      "updatedAt": "2024-08-21T16:59:18.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
