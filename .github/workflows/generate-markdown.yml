@@ -29,6 +29,12 @@ jobs:
     - name: Generate markdown for Server Tracking Plan
       run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md"
 
+    - name: Reset and check files
+      run: |
+        git reset
+        git add -f docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+        git status
+
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
