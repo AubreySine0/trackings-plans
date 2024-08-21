@@ -306,16 +306,11 @@ jobs:
         PLAN_DIR=plans/prod/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
-    - name: Check JavaScript markdown before generation
-      run: cat docs/javascript_tracking_plan.md || echo "JavaScript markdown not generated yet"
 
     - name: Generate markdown for JavaScript
       run: |
           git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
           node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "docs/javascript_tracking_plan.md" || echo "No changes detected for JavaScript markdown"
-
-    - name: Check JavaScript markdown after generation
-      run: cat docs/javascript_tracking_plan.md || echo "JavaScript markdown not generated"
 
     # Update Server Tracking Plan
     - name: Run update script for Server
