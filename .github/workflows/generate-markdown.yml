@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout main branch
       uses: actions/checkout@v3
-
+      with:
+        ref: main
+      
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -26,9 +28,6 @@ jobs:
 
     - name: Generate markdown for Server Tracking Plan
       run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md"
-
-    - name: Checkout main branch
-      run: git checkout main
 
     - name: Commit and push changes
       run: |
