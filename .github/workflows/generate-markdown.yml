@@ -70,6 +70,12 @@ jobs:
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
 
+    - name: Fetch main branch
+      run: git fetch origin main:main
+
+    - name: Switch to main branch
+      run: git checkout main
+
     - name: Generate markdown
       run: |
         node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "./docs/javascript_tracking_plan.md"
