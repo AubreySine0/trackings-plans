@@ -61,6 +61,6 @@ jobs:
         
     - name: Commit and push changes
       run: |
-        git add .
+        git add plans/dev/javascript plans/dev/server
         git commit -m "Test markdown generation" || echo "No changes to commit"
         git push origin main
