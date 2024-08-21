@@ -47,6 +47,6 @@ jobs:
         
     - name: Commit and push changes
       run: |
-        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+        git add .
         git commit -m "Test markdown generation" || echo "No changes to commit"
         git push origin main
