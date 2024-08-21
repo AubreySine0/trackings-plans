@@ -194,6 +194,8 @@ jobs:
         PLAN_DIR=tracking-rules/javascript \
         node scripts/update-tracking-plan.js || echo "No changes detected for JavaScript"
 
+    - name: Sleep for 3 seconds
+      run: sleep 3
 
     - name: Run save script for JavaScript
       run: |
