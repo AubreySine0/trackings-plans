@@ -27,7 +27,6 @@ analytics.track("First Event" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
 
 
@@ -55,7 +54,6 @@ analytics.track("Obj Prop" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
 
 
@@ -76,6 +74,33 @@ No description provided
 
 ```javascript
 analytics.track("Obj Prop 10" {
+"object": "<<object>>"
+"object2": "<<object>>"
+});
+``` 
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
+
+### Obj Prop 15
+
+<!-- tabs:start -->
+#### **Basics**
+
+No description provided
+#### **Properties**
+
+|**Name** | `Type` | Description | Required?|
+| :--- | :--- | :--- | :---|
+|**object** | `object` |...|Required/Optional|
+|**object2** | `object` |...|Required/Optional|
+#### **JS**
+
+```javascript
+analytics.track("Obj Prop 15" {
 "object": "<<object>>"
 "object2": "<<object>>"
 });
@@ -110,7 +135,6 @@ analytics.track("Obj Prop 2" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
 
 
@@ -138,7 +162,6 @@ analytics.track("Obj Prop 3" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
 
 
@@ -222,7 +245,6 @@ analytics.track("Second Event" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
 
 
@@ -246,5 +268,4 @@ analytics.track("Segment Consent Preference Updated" {
 
 <!-- tabs:end -->
 
-aubrey was here
 <!-- panels:end -->
