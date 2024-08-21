@@ -26,7 +26,7 @@ rules:
         properties:
           sub_prop1:
             description: this is a required sub-property in an object here here here here
-            type: string
+            type: array
             required: true
         type: object
         required: true   #test
