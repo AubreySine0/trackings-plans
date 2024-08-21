@@ -327,7 +327,7 @@
                 "description": "this is a single",
                 "properties": {
                   "int": {
-                    "description": "this is an optional sub-property in an object",
+                    "description": "this is an",
                     "type": "number"
                   },
                   "string": {
@@ -361,7 +361,7 @@
         ]
       },
       "createdAt": "2024-08-21T16:48:44.000Z",
-      "updatedAt": "2024-08-21T16:59:18.000Z",
+      "updatedAt": "2024-08-21T17:10:38.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
