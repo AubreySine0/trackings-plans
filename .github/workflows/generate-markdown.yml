@@ -74,19 +74,23 @@ jobs:
     - name: Generate markdown for Server Tracking Plan
       run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "./docs/server_tracking_plan.md"
 
-    - name: Validate markdown generation
-      run: cat ./docs/javascript_tracking_plan.md && cat ./docs/server_tracking_plan.md
+    - name: Ensure file system sync
+      run: sleep 2
 
-    - name: Ensure files are recognized
-      run: touch ./docs/javascript_tracking_plan.md ./docs/server_tracking_plan.md
+    - name: Reset Git index and re-add files
+      run: |
+        git reset
+        git add -A
+        git status -v
 
-    - name: Check git status
-      run: git status -v
+    - name: Force add specific files
+      run: |
+        git add -f $(pwd)/docs/javascript_tracking_plan.md $(pwd)/docs/server_tracking_plan.md
+        git status -v
 
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add -f ./docs/javascript_tracking_plan.md ./docs/server_tracking_plan.md
         git commit -m "Generate markdown for tracking plans [skip ci]" || echo "No changes to commit"
         git push origin main
