@@ -125,7 +125,6 @@ try {
         formattedEvent.push('});');
         formattedEvent.push('```' + ' \n');
         formattedEvent.push('<!-- tabs:end -->' + '\n');
-        formattedEvent.push('aubrey was here');
         formattedEvent.push('<!-- panels:end -->' + '\n');
         formattedEvents.push.apply(formattedEvents, formattedEvent);
     }
