@@ -48,7 +48,8 @@ this project will need the following github respoitory secrets
 
 If a new release is created & the title is `RESET DEV` the following workflow will trigger:
 - `GET` PROD tracking plan rules
-- `PUT` **(replace all rules)** `PROD` tracking plan rules in `DEV` tracking plans
+- `PUT` **(replace all rules)** output from step 1 in `DEV` tracking plans (Segment)
+- updates rules in `plans/dev/<TP_NAME>/current-rules.json`
 
 ### MARKDOWN
 If rules are updated in the app and not via yaml the markdown data dictionary may get outdated.
@@ -61,3 +62,4 @@ Reccommended to run locally, you can access generate-yaml-rules.js
 - `node scripts/generate-yaml-rules.js plans/prod/<TP_NAME> tracking-rules/rules/<TP_NAME>` 
     - you may need to create a directory `plans/rules/<TP_NAME>`
 - Converts all PROD rules to their own unique yaml file for easy updates
+
