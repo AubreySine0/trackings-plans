@@ -37,7 +37,7 @@
                 "description": "this is required object (i.e. can have nested sub-properties) here here",
                 "properties": {
                   "sub_prop1": {
-                    "description": "this is a required sub-property in an object",
+                    "description": null,
                     "type": "array"
                   }
                 },
@@ -62,7 +62,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:10:05.000Z",
-      "updatedAt": "2024-08-21T16:59:55.000Z",
+      "updatedAt": "2024-08-21T17:11:42.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
