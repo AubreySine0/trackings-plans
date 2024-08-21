@@ -1,11 +1,11 @@
-name: Generate Markdown on Release
+name: Reset Dev Tracking Plans
 
 on:
   release:
     types: [published]
 
 jobs:
-  generate-markdown:
+  reset-dev-tracking-plans:
     if: contains(github.event.release.name, 'RESET_DEV')
     runs-on: ubuntu-latest
 
