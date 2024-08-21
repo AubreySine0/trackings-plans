@@ -37,13 +37,13 @@ rules:
 
   - key: Obj Prop 2
     type: TRACK
-    description: description here
+    description: description here here
     version: 1
     labels:
       feature: journeys
     properties:
       object:
-        description: this is a single property 
+        description: this is a single 
         properties:
           string:
             description: this is a required sub-property in an object here
