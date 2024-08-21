@@ -203,6 +203,11 @@ jobs:
         PLAN_DIR=plans/prod/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
+    - name: Generate markdown for JavaScript
+      run: |
+          git diff --name-only HEAD^ HEAD | grep -q "plans/prod/javascript/current-rules.json" && \
+          node scripts/render-tp.js "JavaScript Tracking Plan" "plans/javascript/current-rules.json" "docs/javascript_tracking_plan.md" || echo "No changes detected for JavaScript markdown"
+
     # Update Server Tracking Plan
     - name: Run update script for Server
       run: |
@@ -219,12 +224,18 @@ jobs:
         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
         PLAN_DIR=plans/prod/server \
-        node scripts/save-tracking-plan.js || echo "No changes detected for server"
+        node scripts/save-tracking-plan.js || echo "No changes detected for server
+    - name: Generate markdown for Server
+      run: |
+        git diff --name-only HEAD^ HEAD | grep -q "plans/prod/server/current-rules.json" && \
+        node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md" || echo "No changes detected for Server markdown"
+
 
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add plans/prod/javascript/current-rules.json plans/prod/server/current-rules.json
+        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
         git commit -m "Generate markdown for updated tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin main
