@@ -130,6 +130,7 @@ try {
     }
 
     let eventsMarkdown = formattedEvents.join(os.EOL);
+    console.log(eventsMarkdown);
     fs.writeFileSync(markdownTargetPath, eventsMarkdown, 'utf-8');
     console.log(`Markdown file successfully written to: ${markdownTargetPath}`);
 } catch (error) {
