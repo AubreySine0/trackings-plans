@@ -203,6 +203,9 @@ jobs:
         PLAN_DIR=plans/prod/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
 
+    - name: Sleep for 3 seconds
+      run: sleep 3
+
     - name: Generate markdown for JavaScript
       run: |
           git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/javascript" && \
@@ -230,6 +233,9 @@ jobs:
       run: |
         git diff --name-only HEAD^ HEAD | grep -q "tracking-rules/server" && \
         node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md" || echo "No changes detected for Server markdown"
+
+    - name: Sleep for 3 seconds
+      run: sleep 3
 
 
     - name: Commit and push changes
