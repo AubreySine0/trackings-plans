@@ -1,11 +1,11 @@
-name: Generate Markdown on Release
+name: Reset Dev Tracking Plans
 
 on:
   release:
     types: [published]
 
 jobs:
-  generate-markdown:
+  reset-dev-tracking-plans:
     if: contains(github.event.release.name, 'RESET_DEV')
     runs-on: ubuntu-latest
 
@@ -47,6 +47,6 @@ jobs:
         
     - name: Commit and push changes
       run: |
-        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+        git add .
         git commit -m "Test markdown generation" || echo "No changes to commit"
         git push origin main
