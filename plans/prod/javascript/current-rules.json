@@ -38,7 +38,7 @@
                 "properties": {
                   "sub_prop1": {
                     "description": "this is a required sub-property in an object here here here here",
-                    "type": "string"
+                    "type": "array"
                   }
                 },
                 "required": [
@@ -62,7 +62,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:10:05.000Z",
-      "updatedAt": "2024-08-21T16:44:40.000Z",
+      "updatedAt": "2024-08-21T16:52:54.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
