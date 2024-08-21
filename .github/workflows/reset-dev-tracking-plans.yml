@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate-markdown:
-    if: contains(github.event.release.name, 'MARKDOWN')
+    if: contains(github.event.release.name, 'RESET_DEV')
     runs-on: ubuntu-latest
 
     steps:
@@ -31,11 +31,20 @@ jobs:
     - name: Switch to main branch
       run: git checkout main
 
-    - name: Generate markdown
+    - name: Run save script for Server
       run: |
-        node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "docs/javascript_tracking_plan.md"
-        node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md"
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+        PLAN_DIR=plans/dev/server \
+        node scripts/save-tracking-plan.js || echo "No changes detected for server"
 
+    - name: Run save script for JavaScript
+      run: |
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+        PLAN_DIR=plans/dev/javascript \
+        node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
+        
     - name: Commit and push changes
       run: |
         git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
