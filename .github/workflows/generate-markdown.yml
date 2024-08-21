@@ -24,10 +24,10 @@ jobs:
       run: npm install
 
     - name: Generate markdown for JavaScript Tracking Plan
-      run: node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "docs/javascript_tracking_plan.md"
+      run: node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "./docs/javascript_tracking_plan.md"
 
     - name: Generate markdown for Server Tracking Plan
-      run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "docs/server_tracking_plan.md"
+      run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "./docs/server_tracking_plan.md"
 
     - name: Ensure files are recognized
       run: |
