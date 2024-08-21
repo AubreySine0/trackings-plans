@@ -71,7 +71,7 @@
                 "type": "object"
               },
               "prop3": {
-                "description": "this is a single",
+                "description": "this is a single test testing",
                 "type": "string"
               }
             },
@@ -86,7 +86,7 @@
         ]
       },
       "createdAt": "2024-08-08T18:08:19.000Z",
-      "updatedAt": "2024-08-21T16:33:17.000Z",
+      "updatedAt": "2024-08-21T16:43:40.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
