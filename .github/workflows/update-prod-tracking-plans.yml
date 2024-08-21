@@ -236,7 +236,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add plans/prod/javascript/current-rules.json plans/prod/server/current-rules.json
-        git add docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+        git add .
         git commit -m "Generate markdown for updated tracking plan rules [skip ci]" || echo "No changes to commit"
         git push origin main
