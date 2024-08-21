@@ -61,8 +61,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:23:59.000Z",
-      "updatedAt": "2024-08-21T16:44:44.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -119,8 +119,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-08T18:23:59.000Z",
-      "updatedAt": "2024-08-14T22:59:51.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -180,8 +180,69 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T17:55:15.000Z",
-      "updatedAt": "2024-08-21T17:55:15.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Obj Prop 15",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "labels": {
+          "feature": "journeys"
+        },
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "description": "this is a single property value",
+                "properties": {
+                  "int": {
+                    "description": "this is an",
+                    "type": "number"
+                  },
+                  "string": {
+                    "description": "this is a required sub-property in an objec",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "string"
+                ],
+                "type": "object"
+              },
+              "object2": {
+                "description": "this is a single property",
+                "properties": {
+                  "string": {
+                    "description": "this is a required sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-21T23:50:33.000Z",
+      "updatedAt": "2024-08-21T23:50:33.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -241,8 +302,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-15T21:15:54.000Z",
-      "updatedAt": "2024-08-21T16:28:13.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -299,8 +360,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-15T00:25:26.000Z",
-      "updatedAt": "2024-08-15T21:12:46.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -360,8 +421,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T16:36:49.000Z",
-      "updatedAt": "2024-08-21T16:36:49.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -421,8 +482,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T16:49:57.000Z",
-      "updatedAt": "2024-08-21T17:22:01.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -486,8 +547,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-14T22:31:15.000Z",
-      "updatedAt": "2024-08-15T23:46:35.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -510,8 +571,8 @@
           }
         }
       },
-      "createdAt": "2024-08-08T18:15:36.000Z",
-      "updatedAt": "2024-08-08T18:15:36.000Z",
+      "createdAt": "2024-08-21T21:44:01.000Z",
+      "updatedAt": "2024-08-21T21:44:01.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
