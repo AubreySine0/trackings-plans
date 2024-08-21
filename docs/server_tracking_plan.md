@@ -27,6 +27,7 @@ analytics.track("First Event" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
 
 
@@ -54,6 +55,7 @@ analytics.track("Obj Prop" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
 
 
@@ -108,6 +110,7 @@ analytics.track("Obj Prop 2" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
 
 
@@ -135,6 +138,7 @@ analytics.track("Obj Prop 3" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
 
 
@@ -218,6 +222,7 @@ analytics.track("Second Event" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
 
 
@@ -241,4 +246,5 @@ analytics.track("Segment Consent Preference Updated" {
 
 <!-- tabs:end -->
 
+aubrey was here
 <!-- panels:end -->
