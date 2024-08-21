@@ -42,7 +42,7 @@ this project will need the following github respoitory secrets
       -  `docs/<TP_NAME>.md` is defined by an arugment value in `update-prod-tracking-plans.yml`
     - Add, commit push to main
  
-#### ADVANCED FEATURES
+## ADVANCED FEATURES
 
 ### RESET_DEV
 
@@ -54,3 +54,10 @@ If a new release is created & the title is `RESET DEV` the following workflow wi
 If rules are updated in the app and not via yaml the markdown data dictionary may get outdated.
 - `GET` `PROD` rules
 - `render-tp.js`
+
+### Local node script
+Reccommended to run locally, you can access generate-yaml-rules.js
+- `npm install`
+- `node scripts/generate-yaml-rules.js plans/prod/<TP_NAME> tracking-rules/rules/<TP_NAME>` 
+    - you may need to create a directory `plans/rules/<TP_NAME>`
+- Converts all PROD rules to their own unique yaml file for easy updates
