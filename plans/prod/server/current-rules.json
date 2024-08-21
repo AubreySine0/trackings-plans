@@ -124,6 +124,67 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
+      "key": "Obj Prop 10",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "labels": {
+          "feature": "journeys"
+        },
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "description": "this is a single property value",
+                "properties": {
+                  "int": {
+                    "description": "this is an",
+                    "type": "number"
+                  },
+                  "string": {
+                    "description": "this is a required sub-property in an objec",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "string"
+                ],
+                "type": "object"
+              },
+              "object2": {
+                "description": "this is a single property",
+                "properties": {
+                  "string": {
+                    "description": "this is a required sub-property in an object",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "object"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-08-21T17:55:15.000Z",
+      "updatedAt": "2024-08-21T17:55:15.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
       "key": "Obj Prop 2",
       "type": "TRACK",
       "version": 1,
