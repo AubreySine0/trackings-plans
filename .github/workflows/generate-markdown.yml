@@ -1,3 +1,48 @@
+# name: Generate Markdown on Release
+
+# on:
+#   release:
+#     types: [published]
+
+# jobs:
+#   generate-markdown:
+#     if: contains(github.event.release.name, 'MARKDOWN')
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout main branch
+#       uses: actions/checkout@v3
+#       with:
+#         ref: main
+      
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '14'
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Generate markdown for JavaScript Tracking Plan
+#       run: node scripts/render-tp.js "JavaScript Tracking Plan" "plans/prod/javascript/current-rules.json" "./docs/javascript_tracking_plan.md"
+
+#     - name: Generate markdown for Server Tracking Plan
+#       run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "./docs/server_tracking_plan.md"
+
+#     - name: Ensure files are recognized
+#       run: |
+#         touch docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+
+#     - name: Check git status
+#       run: git status -v
+
+#     - name: Commit and push changes
+#       run: |
+#         git config --global user.name "github-actions[bot]"
+#         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#         git add -f ./docs/javascript_tracking_plan.md ./docs/server_tracking_plan.md
+#         git commit -m "Generate markdown for tracking plans [skip ci]" || echo "No changes to commit"
+#         git push origin main
 name: Generate Markdown on Release
 
 on:
@@ -29,9 +74,11 @@ jobs:
     - name: Generate markdown for Server Tracking Plan
       run: node scripts/render-tp.js "Server Tracking Plan" "plans/prod/server/current-rules.json" "./docs/server_tracking_plan.md"
 
+    - name: Validate markdown generation
+      run: cat ./docs/javascript_tracking_plan.md && cat ./docs/server_tracking_plan.md
+
     - name: Ensure files are recognized
-      run: |
-        touch docs/javascript_tracking_plan.md docs/server_tracking_plan.md
+      run: touch ./docs/javascript_tracking_plan.md ./docs/server_tracking_plan.md
 
     - name: Check git status
       run: git status -v
