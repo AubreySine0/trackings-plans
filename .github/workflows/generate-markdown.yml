@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate-markdown:
-    if: startsWith(github.event.release.tag_name, 'MARKDOWN')
+    if: startsWith(github.event.release.name, 'MARKDOWN')
     runs-on: ubuntu-latest
 
     steps:
