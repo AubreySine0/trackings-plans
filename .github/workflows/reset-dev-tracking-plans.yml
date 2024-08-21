@@ -44,6 +44,20 @@ jobs:
         SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
         PLAN_DIR=plans/dev/javascript \
         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
+    
+    - name: Reset Rules In Segment for Javascript
+      run: |
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+        PLAN_DIR=plans/prod/javascript \
+        node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
+
+    - name: Reset Rules In Segment for Server
+      run: |
+        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+        PLAN_DIR=plans/prod/server \
+        node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
         
     - name: Commit and push changes
       run: |
