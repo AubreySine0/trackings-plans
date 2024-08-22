@@ -139,6 +139,33 @@ analytics.track("Obj Prop 20" {
 
 
 
+### Obj Prop 22
+
+<!-- tabs:start -->
+#### **Basics**
+
+No description provided
+#### **Properties**
+
+|**Name** | `Type` | Description | Required?|
+| :--- | :--- | :--- | :---|
+|**object** | `object` |...|Required/Optional|
+|**object2** | `object` |...|Required/Optional|
+#### **JS**
+
+```javascript
+analytics.track("Obj Prop 22" {
+"object": "<<object>>"
+"object2": "<<object>>"
+});
+``` 
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
+
 ### Obj Prop 4
 
 <!-- tabs:start -->
