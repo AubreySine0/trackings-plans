@@ -1,5 +1,5 @@
 rules:
-  - key: Third Event
+  - key: Aubrey's Event
     type: TRACK
     description: my thrid event description here again
     version: 1
