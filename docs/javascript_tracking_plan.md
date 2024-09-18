@@ -2,6 +2,31 @@ JavaScript Tracking Plan
 
 
 
+### Advisory SE Roundtable
+
+<!-- tabs:start -->
+#### **Basics**
+
+No description provided
+#### **Properties**
+
+|**Name** | `Type` | Description | Required?|
+| :--- | :--- | :--- | :---|
+|**prop2** | `string` |...|Required/Optional|
+#### **JS**
+
+```javascript
+analytics.track("Advisory SE Roundtable" {
+"prop2": "<<string>>"
+});
+``` 
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
+
 ### Aubrey's Event 1
 
 <!-- tabs:start -->
