@@ -2,6 +2,31 @@ JavaScript Tracking Plan
 
 
 
+### Aubrey's Event 1
+
+<!-- tabs:start -->
+#### **Basics**
+
+No description provided
+#### **Properties**
+
+|**Name** | `Type` | Description | Required?|
+| :--- | :--- | :--- | :---|
+|**prop2** | `string` |...|Required/Optional|
+#### **JS**
+
+```javascript
+analytics.track("Aubrey's Event 1" {
+"prop2": "<<string>>"
+});
+``` 
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
+
 ### First Event
 
 <!-- tabs:start -->

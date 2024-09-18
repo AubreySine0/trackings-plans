@@ -1,6 +1,44 @@
 {
   "rules": [
     {
+      "key": "Aubrey's Event 1",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "labels": {
+          "feature": "journeys"
+        },
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "prop2": {
+                "description": "this is a single property",
+                "type": "string"
+              }
+            },
+            "required": [
+              "prop2"
+            ]
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "createdAt": "2024-09-18T18:36:43.000Z",
+      "updatedAt": "2024-09-18T18:36:43.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
       "key": "First Event",
       "type": "TRACK",
       "version": 1,
