@@ -1,7 +1,7 @@
 # trackings-plans
 a repository that demonstrates the power of GitHub workflows to enhance management of a Segment Tracking Plan
 
-![Alt text](![Aubrey's Automated TP Management - Aubrey Final Setup Draft](https://github.com/user-attachments/assets/83d617e5-8f52-40b1-afd8-956010b4d662))
+![Aubrey's Automated TP Management - Aubrey Final Setup Draft](https://github.com/user-attachments/assets/83d617e5-8f52-40b1-afd8-956010b4d662)
 
 ## instructions for use
 
